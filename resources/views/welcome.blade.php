@@ -1,7 +1,3 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('title','Ticket IT')
-
-@section('content')
-
-@endsection
+</x-app-layout>
