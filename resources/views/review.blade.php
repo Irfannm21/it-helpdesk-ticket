@@ -32,9 +32,12 @@
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$item->date}}
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$item->status}}</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$item->description}}</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$item->review}}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                        @if ($item->review == NULL)
                                         <a href="#" class="text-indigo-600 hover:text-indigo-900">Add Review</a>
+                                        @else
+                                        @endif
 
                                     </td>
 
