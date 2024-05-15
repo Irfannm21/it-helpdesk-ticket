@@ -23,58 +23,35 @@
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                        01/Client/I/24
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Irfan</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">20-01-2024
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">BlueScreen</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Completed</td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    </td>
+                                    <th scope="col"
+                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">ID Workplan
+                                    </th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Name</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Action</th>
                                 </tr>
-                                <tr>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                        02/Client/I/24
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Irfan</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">20-01-2024
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">BlueScreen</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">On Repair</td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                        03/Client/I/24
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Irfan</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">20-01-2024
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">BlueScreen</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">On Repair</td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                        04/Client/I/24
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Irfan</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">20-01-2024
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">BlueScreen</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">On Repair</td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    </td>
-                                </tr>
+                            </thead>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 bg-white">
+                            @foreach ($results as $item)
+                            <tr>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                    {{$item->id}}
+                                </td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$item->name}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$item->date}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$item->description}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$item->status}}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Repair</a>
+                                </td>
 
-                            <!-- More people... -->
-                            </tbody>
+                            </tr>
+                            @endforeach
+                        <!-- More people... -->
+                        </tbody>
                         </table>
                     </div>
                 </div>
