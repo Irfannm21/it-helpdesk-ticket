@@ -1,63 +1,75 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('home'));
-Route::get('/ticket', function () {
-    $results = collect([
-        (object)[
-            "id" => "001/Ticket/I/24",
-            "name" => "Irfan",
-            "date" => "02-01-2024",
-            "description" => "Bluescreen",
-            "status" => "draft",
-        ],
-        (object)[
-            "id" => "002/Ticket/I/24",
-            "name" => "Nur",
-            "date" => "05-01-2024",
-            "description" => "Bluescreen",
-            "status" => "draft",
-        ],
-        (object)[
-            "id" => "003/Ticket/I/24",
-            "name" => "Muhammad",
-            "date" => "10-01-2024",
-            "description" => "Bluescreen",
-            "status" => "waiting",
-        ],
-        (object)[
-            "id" => "004/Ticket/I/24",
-            "name" => "Fulan",
-            "date" => "11-01-2024",
-            "description" => "Bluescreen",
-            "status" => "waiting",
-        ],
-        (object)[
-            "id" => "005/Ticket/I/24",
-            "name" => "Fulanah",
-            "date" => "14-01-2024",
-            "description" => "Bluescreen",
-            "status" => "Completed",
-        ],
-        (object)[
-            "id" => "006/Ticket/I/24",
-            "name" => "Erik",
-            "date" => "18-01-2024",
-            "description" => "Bluescreen",
-            "status" => "Completed",
-        ],
+Route::get('/', HomeController::class);
 
-    ]);
 
-    return view('ticket',compact('results'));
- });
 
- Route::get('/ticket/create', function () {
-    return view('ticket.create');
- })->name('ticket.create');
+Route::prefix('/ticket')->name('ticket.')->group(function () {
+    Route::get('/', function () {
+        $results = collect([
+            (object)[
+                "id" => "001/Ticket/I/24",
+                "name" => "Irfan",
+                "date" => "02-01-2024",
+                "description" => "Bluescreen",
+                "status" => "draft",
+            ],
+            (object)[
+                "id" => "002/Ticket/I/24",
+                "name" => "Nur",
+                "date" => "05-01-2024",
+                "description" => "Bluescreen",
+                "status" => "draft",
+            ],
+            (object)[
+                "id" => "003/Ticket/I/24",
+                "name" => "Muhammad",
+                "date" => "10-01-2024",
+                "description" => "Bluescreen",
+                "status" => "waiting",
+            ],
+            (object)[
+                "id" => "004/Ticket/I/24",
+                "name" => "Fulan",
+                "date" => "11-01-2024",
+                "description" => "Bluescreen",
+                "status" => "waiting",
+            ],
+            (object)[
+                "id" => "005/Ticket/I/24",
+                "name" => "Fulanah",
+                "date" => "14-01-2024",
+                "description" => "Bluescreen",
+                "status" => "Completed",
+            ],
+            (object)[
+                "id" => "006/Ticket/I/24",
+                "name" => "Erik",
+                "date" => "18-01-2024",
+                "description" => "Bluescreen",
+                "status" => "Completed",
+            ],
 
- Route::get('/workplan', function () {
+        ]);
+
+        return view('ticket.index', compact('results'));
+    });
+
+    Route::get('/create', function () {
+        return view('ticket.create');
+    })->name('create');
+
+    Route::get('/{id}/edit', function ($id) {
+        dd($id);
+        return view('ticket.edit', compact('id'));
+    })->name('edit');
+});
+
+
+Route::get('/workplan', function () {
     $results = collect([
 
         (object)[
@@ -82,60 +94,11 @@ Route::get('/ticket', function () {
             "status" => "waiting",
         ],
     ]);
-    return view('workplan',compact('results'));
- });
- Route::get('/ticket', function () {
-    $results = collect([
-        (object)[
-            "id" => "001/Ticket/I/24",
-            "name" => "Irfan",
-            "date" => "02-01-2024",
-            "description" => "Bluescreen",
-            "status" => "draft",
-        ],
-        (object)[
-            "id" => "002/Ticket/I/24",
-            "name" => "Nur",
-            "date" => "05-01-2024",
-            "description" => "Bluescreen",
-            "status" => "draft",
-        ],
-        (object)[
-            "id" => "003/Ticket/I/24",
-            "name" => "Muhammad",
-            "date" => "10-01-2024",
-            "description" => "Bluescreen",
-            "status" => "waiting",
-        ],
-        (object)[
-            "id" => "004/Ticket/I/24",
-            "name" => "Fulan",
-            "date" => "11-01-2024",
-            "description" => "Bluescreen",
-            "status" => "waiting",
-        ],
-        (object)[
-            "id" => "005/Ticket/I/24",
-            "name" => "Fulanah",
-            "date" => "14-01-2024",
-            "description" => "Bluescreen",
-            "status" => "Completed",
-        ],
-        (object)[
-            "id" => "006/Ticket/I/24",
-            "name" => "Erik",
-            "date" => "18-01-2024",
-            "description" => "Bluescreen",
-            "status" => "Completed",
-        ],
-
-    ]);
-
-    return view('ticket',compact('results'));
- });
+    return view('workplan', compact('results'));
+});
 
 
- Route::get('/realization', function () {
+Route::get('/realization', function () {
     $results = collect([
         (object)[
             "id" => "005/Ticket/I/24",
@@ -160,8 +123,8 @@ Route::get('/ticket', function () {
             "status" => "Completed",
         ],
     ]);
-    return view('realization',compact('results'));
- });
+    return view('realization', compact('results'));
+});
 
 Route::get('/review', function () {
     $results = collect([
@@ -182,6 +145,5 @@ Route::get('/review', function () {
 
     ]);
 
-    return view('review',compact('results'));
+    return view('review', compact('results'));
 });
-
