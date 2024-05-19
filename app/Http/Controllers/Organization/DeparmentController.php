@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Models\Models\Organization\StrukturOrganization;
 use Illuminate\Http\Request;
 
 class DeparmentController extends Controller
@@ -12,7 +13,10 @@ class DeparmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('department.index',[
+            "title" => "Table Director",
+            "results" => StrukturOrganization::where('type',"department")->get(),
+        ]);
     }
 
     /**

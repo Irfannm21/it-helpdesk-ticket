@@ -1,8 +1,9 @@
-<?php
+    <?php
 
 namespace App\Http\Controllers\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Models\Models\Organization\StrukturOrganization;
 use Illuminate\Http\Request;
 
 class OfficeController extends Controller
@@ -12,7 +13,10 @@ class OfficeController extends Controller
      */
     public function index()
     {
-        //
+        return view('office.index', [
+            'title' => 'Main Office',
+            'result' => StrukturOrganization::where('code',"BASE")->first(),
+        ]);
     }
 
     /**

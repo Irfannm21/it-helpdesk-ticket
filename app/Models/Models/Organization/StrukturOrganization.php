@@ -13,9 +13,14 @@ class StrukturOrganization extends Model
     protected $fillable = [
         'code',
         'name',
+        'type',
         'address',
         'phone',
         'email',
         'parent_id'
     ];
+
+    public function parent() {
+        return $this->belongsTo(StrukturOrganization::class, 'parent_id');
+    }
 }
