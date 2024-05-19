@@ -52,15 +52,58 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>{{ __('Dashboard') }}</span></a>
             </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-              <!-- Heading -->
-              <div class="sidebar-heading">
-                {{ __('Data Master') }}
+            {{-- <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                {{ __('Client Menu  ') }}
             </div>
 
-             <!-- Nav Item -->
-             <li class="nav-item {{ Nav::isRoute('product.index') }}">
+            <!-- Nav Item -->
+            <li class="nav-item {{ Nav::isRoute('product.index') }}">
+                <a class="nav-link" href="{{ route('product.index') }}">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>{{ __('Ticket') }}</span>
+                </a>
+            </li> --}}
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                {{ __('Data Master') }}
+            </div>
+            <!-- Nav Item -->
+           
+            <li class="nav-item {{ Nav::isRoute('product.index') }}">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-building"></i>
+                    <span>Struktur Organization</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('office.index') }}">
+                            <i class="fas fa-fw fa-building"></i>
+                            <span>{{ __('Main Office') }}</span>
+                        </a>
+                        <a class="collapse-item" href="{{ route('director.index') }}">
+                            <i class="fas fa-fw fa-user"></i>
+                            <span>{{ __('Directors') }}</span>
+                        </a>
+                        <a class="collapse-item" href="{{ route('deparment.index') }}">
+                            <i class="fas fa-fw fa-user "></i>
+                            <span>{{ __('Department') }}</span>
+                        </a>
+                        <a class="collapse-item" href="{{ route('division.index') }}">
+                            <i class="fas fa-fw fa-user "></i>
+                            <span>{{ __('Division') }}</span>
+                        </a>
+                        
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item -->
+            <li class="nav-item {{ Nav::isRoute('product.index') }}">
                 <a class="nav-link" href="{{ route('product.index') }}">
                     <i class="fas fa-fw fa-plus"></i>
                     <span>{{ __('Product') }}</span>

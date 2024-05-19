@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Models\Organization\StrukturOrganization;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -21,5 +22,9 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
+
+        $this->call(ProductSeeder::class);
+        $this->call(UsersSeeder::class);
+        $this->call(OrganizationSeeder::class);        
     }
 }

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Organization\DeparmentController;
+use App\Http\Controllers\Organization\DirectorController;
+use App\Http\Controllers\Organization\DivisionController;
+use App\Http\Controllers\Organization\OfficeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +38,8 @@ Route::get('/blank', function () {
 Route::middleware('auth')->group(function() {
     Route::resource('basic', BasicController::class);
     Route::resource('product', ProductController::class);
+    Route::resource('office', OfficeController::class);
+    Route::resource('director', DirectorController::class);
+    Route::resource('deparment', DeparmentController::class);
+    Route::resource('division', DivisionController::class);
 });
