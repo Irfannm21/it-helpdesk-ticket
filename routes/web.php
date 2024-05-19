@@ -1,149 +1,37 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class);
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-
-
-Route::prefix('/ticket')->name('ticket.')->group(function () {
-    Route::get('/', function () {
-        $results = collect([
-            (object)[
-                "id" => "001/Ticket/I/24",
-                "name" => "Irfan",
-                "date" => "02-01-2024",
-                "description" => "Bluescreen",
-                "status" => "draft",
-            ],
-            (object)[
-                "id" => "002/Ticket/I/24",
-                "name" => "Nur",
-                "date" => "05-01-2024",
-                "description" => "Bluescreen",
-                "status" => "draft",
-            ],
-            (object)[
-                "id" => "003/Ticket/I/24",
-                "name" => "Muhammad",
-                "date" => "10-01-2024",
-                "description" => "Bluescreen",
-                "status" => "waiting",
-            ],
-            (object)[
-                "id" => "004/Ticket/I/24",
-                "name" => "Fulan",
-                "date" => "11-01-2024",
-                "description" => "Bluescreen",
-                "status" => "waiting",
-            ],
-            (object)[
-                "id" => "005/Ticket/I/24",
-                "name" => "Fulanah",
-                "date" => "14-01-2024",
-                "description" => "Bluescreen",
-                "status" => "Completed",
-            ],
-            (object)[
-                "id" => "006/Ticket/I/24",
-                "name" => "Erik",
-                "date" => "18-01-2024",
-                "description" => "Bluescreen",
-                "status" => "Completed",
-            ],
-
-        ]);
-
-        return view('ticket.index', compact('results'));
-    });
-
-    Route::get('/create', function () {
-        return view('ticket.create');
-    })->name('create');
-
-    Route::get('/{id}/edit', function ($id) {
-        dd($id);
-        return view('ticket.edit', compact('id'));
-    })->name('edit');
+Route::get('/', function () {
+    return view('auth.login');
 });
 
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/workplan', function () {
-    $results = collect([
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
-        (object)[
-            "id" => "003/Ticket/I/24",
-            "name" => "Muhammad",
-            "date" => "10-01-2024",
-            "description" => "Bluescreen",
-            "status" => "waiting",
-        ],
-        (object)[
-            "id" => "004/Ticket/I/24",
-            "name" => "Fulan",
-            "date" => "11-01-2024",
-            "description" => "Bluescreen",
-            "status" => "waiting",
-        ],
-        (object)[
-            "id" => "01/Backup/I/24",
-            "name" => "IT Team",
-            "date" => "18-01-2024",
-            "description" => "Backup Data",
-            "status" => "waiting",
-        ],
-    ]);
-    return view('workplan', compact('results'));
-});
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
+Route::get('/blank', function () {
+    return view('blank');
+})->name('blank');
 
-Route::get('/realization', function () {
-    $results = collect([
-        (object)[
-            "id" => "005/Ticket/I/24",
-            "name" => "Irfan Nur (IT Support)",
-            "date" => "15-01-2024",
-            "description" => "Install Ulang",
-            "status" => "Completed",
-        ],
-        (object)[
-            "id" => "006/Ticket/I/24",
-            "name" => "Hadiandi (IT Support)",
-            "date" => "20-01-2024",
-            "description" => "Install Ulang",
-            "status" => "Completed",
-        ],
-
-        (object)[
-            "id" => "02/Backup/I/24",
-            "name" => "Yudi (IT Staff)",
-            "date" => "03-02-2024",
-            "description" => "Backup to HDD External",
-            "status" => "Completed",
-        ],
-    ]);
-    return view('realization', compact('results'));
-});
-
-Route::get('/review', function () {
-    $results = collect([
-        (object)[
-            "id" => "005/Ticket/I/24",
-            "name" => "Irfan Nur (IT Support)",
-            "date" => "15-01-2024",
-            "review" => "Komputer Lancaar Kembali",
-            "status" => "Completed",
-        ],
-        (object)[
-            "id" => "006/Ticket/I/24",
-            "name" => "Hadiandi (IT Support)",
-            "date" => "20-01-2024",
-            "review" => NULL,
-            "status" => "Completed",
-        ],
-
-    ]);
-
-    return view('review', compact('results'));
+Route::middleware('auth')->group(function() {
+    Route::resource('basic', BasicController::class);
+    Route::resource('product', ProductController::class);
 });
