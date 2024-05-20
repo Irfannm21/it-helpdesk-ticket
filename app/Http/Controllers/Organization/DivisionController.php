@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 
 class DivisionController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         return view('division.index',[
-            "title" => "Table Director",
+            "title" => "Table Division",
             "results" => StrukturOrganization::where('type',"division")->get(),
         ]);
     }
@@ -24,7 +24,10 @@ class DivisionController extends Controller
      */
     public function create()
     {
-        //
+        return view('division.create',[
+            "title" => "New Division",
+            'parents' => StrukturOrganization::where('type','department')->get(),
+        ]);
     }
 
     /**
@@ -32,7 +35,8 @@ class DivisionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $record = new StrukturOrganization;
+        return $record->handleStoreOrUpdate($request);
     }
 
     /**
@@ -46,24 +50,28 @@ class DivisionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(StrukturOrganization $division)
     {
-        //
+        return view('division.edit',[
+            "title" => "Edit Division",
+            'division' => $division,
+            'parents' => StrukturOrganization::where('type','department')->get(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, StrukturOrganization $division)
     {
-        //
+        return $division->handleStoreOrUpdate($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(StrukturOrganization $division)
     {
-        //
+        return $division->handleDestroy();
     }
 }

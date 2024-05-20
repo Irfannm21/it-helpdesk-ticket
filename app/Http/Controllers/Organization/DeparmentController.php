@@ -14,7 +14,7 @@ class DeparmentController extends Controller
     public function index()
     {
         return view('department.index',[
-            "title" => "Table Director",
+            "title" => "Table Department",
             "results" => StrukturOrganization::where('type',"director")->get(),
         ]);
     }
@@ -25,7 +25,7 @@ class DeparmentController extends Controller
     public function create()
     {
         return view('department.create',[
-            "title" => "New Director",
+            "title" => "New Department",
             'parents' => StrukturOrganization::where('type','director')->get(),
         ]);
     }
@@ -53,7 +53,7 @@ class DeparmentController extends Controller
     public function edit(StrukturOrganization $director)
     {
         return view('department.edit',[
-            "title" => "Edit Director",
+            "title" => "Edit Department",
             'director' => $director,
             'parents' => StrukturOrganization::where('type','director')->get(),
         ]);

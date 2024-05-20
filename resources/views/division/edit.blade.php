@@ -8,13 +8,13 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('product.update', $record->id) }}" method="post">
+            <form action="{{ route('director.update', $division->id) }}" method="post">
                 @csrf
                 @method('put')
 
                 <div class="form-group">
                   <label for="code">Code</label>
-                  <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="000/ABC/II/24" autocomplete="off" value="{{ old('code') ?? $record->code }}">
+                  <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="000/ABC/II/24" autocomplete="off" value="{{ old('code') ?? $division->code }}">
                   @error('code')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -22,45 +22,22 @@
 
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name Product" autocomplete="off" value="{{ old('name') ?? $record->name }}">
+                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name Product" autocomplete="off" value="{{ old('name') ?? $division->name }}">
                   @error('name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
-                <div class="form-group">
-                  <label for="date">Date</label>
-                  <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date" placeholder="Email" autocomplete="off" value="{{ old('date') ?? $record->date }}">
-                  @error('date')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
 
                 <div class="form-group">
-                  <label for="name">Type Product</label>
+                  <label for="name">Parent</label>
                  <select name="types" id="types" class="form-control @error('types') is-invalid @enderror" >
-                  <option value="">-- Select Product --</option>
-                  <option value="Cpu ">CPU</option>
-                  <option value="Network">Network</option>
-                  <option value="Printer">Printer</option>
+                  <option value="" selected>-- Select --</option>
+                  @foreach ($parents as $item)
+                      <option value="{{$item->id}}" {{$item->id == $division->parent_id ? 'selected' : ''}}>{{$item->name}}</option>
+                  @endforeach
                 </select>
                   @error('name')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
-
-                <div class="form-group">
-                  <label for="price">Price</label>
-                  <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="20000000" autocomplete="off" value="{{ old('price') ?? $record->price }}">
-                  @error('price')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
-
-                <div class="form-group">
-                  <label for="description">Description</label>
-                  <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
-                  @error('description')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
