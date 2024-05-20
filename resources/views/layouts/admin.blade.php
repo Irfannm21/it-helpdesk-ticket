@@ -91,7 +91,7 @@
                             <i class="fas fa-fw fa-user"></i>
                             <span>{{ __('Directors') }}</span>
                         </a>
-                        <a class="collapse-item" href="{{ route('deparment.index') }}">
+                        <a class="collapse-item" href="{{ route('department.index') }}">
                             <i class="fas fa-fw fa-user"></i>
                             <span>{{ __('Department') }}</span>
                         </a>

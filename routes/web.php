@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('product', ProductController::class);
     Route::resource('office', OfficeController::class);
     Route::resource('director', DirectorController::class);
-    Route::resource('deparment', DeparmentController::class);
+    Route::resource('department', DeparmentController::class);
     Route::resource('division', DivisionController::class);
     Route::resource('position', PositionController::class);
     Route::resource('client', ClientController::class);

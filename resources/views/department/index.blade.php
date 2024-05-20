@@ -6,7 +6,7 @@
 
     <!-- Main Content goes here -->
 
-    <a href="{{ route('department.create') }}" class="btn btn-primary mb-3">New department</a>
+    <a href="{{ route('department.create') }}" class="btn btn-primary mb-3">New Department</a>
 
     @if (session('message'))
         <div class="alert alert-success">

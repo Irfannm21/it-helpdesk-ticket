@@ -38,7 +38,7 @@ class StrukturOrganization extends Model
 
             // return $this->commitSaved();
             $this->commitSaved();
-            return redirect()->route('director.index')->with('message', 'User added successfully!');
+            return redirect()->route('director.index')->with('message', 'Struktur added successfully!');
         } catch (\Exception $e) {
             return $this->rollbackSaved($e);
         }
@@ -50,7 +50,7 @@ class StrukturOrganization extends Model
         try {
             $this->delete();
             $this->commitDeleted();
-            return redirect()->route('director.index')->with('message', 'Delete Product successfully!');
+            return redirect()->route('director.index')->with('message', 'Delete Structur successfully!');
         } catch (\Exception $e) {
             return $this->rollbackDeleted($e);
         }

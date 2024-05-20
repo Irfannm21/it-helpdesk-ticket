@@ -13,7 +13,7 @@
 
                 <div class="form-group">
                   <label for="code">Code</label>
-                  <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="DIR00" autocomplete="off" value="{{ old('code') }}">
+                  <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="Code Department" autocomplete="off" value="{{ old('code') }}">
                   @error('code')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -21,14 +21,14 @@
 
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name Product" autocomplete="off" value="{{ old('name') }}">
+                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name Department" autocomplete="off" value="{{ old('name') }}">
                   @error('name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="name">Name</label>
+                  <label for="name">Parent</label>
                   <select name="parent_id" id="" class="form-control">
                     <option value="" selected>-- Select --</option>
                     @foreach ($parents as $item)
