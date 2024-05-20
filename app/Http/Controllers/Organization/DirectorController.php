@@ -24,7 +24,10 @@ class DirectorController extends Controller
      */
     public function create()
     {
-        //
+        return view('director.create',[
+            "title" => "New Director",
+            'parents' => StrukturOrganization::WhereIn('type',['director','base'])->get(),
+        ]);
     }
 
     /**
@@ -32,7 +35,8 @@ class DirectorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $record = new StrukturOrganization;
+        return $record->handleStoreOrUpdate($request);
     }
 
     /**
@@ -46,24 +50,28 @@ class DirectorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(StrukturOrganization $director)
     {
-        //
+        return view('director.edit',[
+            "title" => "Edit Director",
+            'director' => $director,
+            'parents' => StrukturOrganization::WhereIn('type',['director','base'])->get(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, StrukturOrganization $director)
     {
-        //
+        return $director->handleStoreOrUpdate($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(StrukturOrganization $director)
     {
-        //
+        return $director->handleDestroy();
     }
 }

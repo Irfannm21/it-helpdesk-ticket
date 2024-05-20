@@ -38,7 +38,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-fix"></i>
+                    <img class="img-fluid w-75" src="{{ asset('img/favicon.png') }}" alt="">
                 </div>
                 <div class="sidebar-brand-text mx-3">IT Helpdesk</div>
             </a>
@@ -80,7 +80,7 @@
                     <i class="fas fa-fw fa-building"></i>
                     <span>Struktur Organization</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
                     <div class="collapse-inner rounded bg-white py-2">
                         <a class="collapse-item" href="{{ route('office.index') }}">
@@ -115,11 +115,18 @@
             <!-- Nav Item -->
             <li class="nav-item {{ Nav::isRoute('product.index') }}">
                 <a class="nav-link" href="{{ route('product.index') }}">
-                    <i class="fas fa-fw fa-plus"></i>
+                    <i class="fas fa-fw fa-microchip"></i>
                     <span>{{ __('Product') }}</span>
                 </a>
             </li>
 
+              <!-- Nav Item -->
+              <li class="nav-item {{ Nav::isRoute('client.index') }}">
+                <a class="nav-link" href="{{ route('client.index') }}">
+                    <i class="fas fa-fw fa-desktop"></i>
+                    <span>{{ __('Client') }}</span>
+                </a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 

@@ -57,6 +57,7 @@ class UsersSeeder extends Seeder
             $result->email_verified_at = $val['email_verified_at'];
             $result->password = $val['password'];
             $result->pc_id = $val['pc_id'];
+            $result->position_id = $val['position_id'] ?? NULL;
             $result->printer_id = $val['printer_id'];
             $result->network_id = $val['network_id'];
             $result->save();

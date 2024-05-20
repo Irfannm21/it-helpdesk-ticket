@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Organization\DeparmentController;
 use App\Http\Controllers\Organization\DirectorController;
 use App\Http\Controllers\Organization\DivisionController;
@@ -44,4 +45,5 @@ Route::middleware('auth')->group(function() {
     Route::resource('deparment', DeparmentController::class);
     Route::resource('division', DivisionController::class);
     Route::resource('position', PositionController::class);
+    Route::resource('client', ClientController::class);
 });

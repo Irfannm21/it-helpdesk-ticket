@@ -6,7 +6,7 @@
 
     <!-- Main Content goes here -->
 
-    <a href="{{ route('department.create') }}" class="btn btn-primary mb-3">New department</a>
+    <a href="{{ route('basic.create') }}" class="btn btn-primary mb-3">New User</a>
 
     @if (session('message'))
         <div class="alert alert-success">
@@ -18,23 +18,28 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Code</th>
                 <th>Name</th>
-                <th>Parent Name</th>
-                <th>Action</th>
+                <th>Email</th>
+                <th>PC ID</th>
+                <th>Printer ID</th>
+                <th>Network ID</th>
+                
+                <th>#</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($results as $result)
+            @foreach ($results as $user)
                 <tr>
                     <td scope="row">{{ $loop->iteration }}</td>
-                    <td>{{ $result->code }}</td>
-                    <td>{{ $result->name }}</td>
-                    <td>{{ $result->parent->name }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->pc->code ?? ' - ' }}</td>
+                    <td>{{ $user->printer->code ?? ' - ' }}</td>
+                    <td>{{ $user->network->code ?? ' - ' }}</td>
                     <td>
                         <div class="d-flex">
-                            <a href="{{ route('department.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
-                            <form action="{{ route('department.destroy', $result->id) }}" method="post">
+                            <a href="{{ route('basic.edit', $user->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
+                            <form action="{{ route('basic.destroy', $user->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this?')">Delete</button>

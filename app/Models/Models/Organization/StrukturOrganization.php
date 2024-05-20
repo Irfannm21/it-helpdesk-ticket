@@ -27,4 +27,32 @@ class StrukturOrganization extends Model
     public function positions() {
         return $this->hasMany(Position::class, 'org_id');
     }
+
+    public function handleStoreOrUpdate($request)
+    {
+        $this->beginTransaction();
+        try {
+            $this->fill($request->all());
+            $this->type = "director";
+            $this->save();
+
+            // return $this->commitSaved();
+            $this->commitSaved();
+            return redirect()->route('director.index')->with('message', 'User added successfully!');
+        } catch (\Exception $e) {
+            return $this->rollbackSaved($e);
+        }
+    }
+
+    public function handleDestroy()
+    {
+        $this->beginTransaction();
+        try {
+            $this->delete();
+            $this->commitDeleted();
+            return redirect()->route('director.index')->with('message', 'Delete Product successfully!');
+        } catch (\Exception $e) {
+            return $this->rollbackDeleted($e);
+        }
+    }
 }

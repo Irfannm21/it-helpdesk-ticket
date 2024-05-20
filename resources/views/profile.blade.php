@@ -2,6 +2,9 @@
 
 @section('main-content')
     <!-- Page Heading -->
+    {{-- @php
+        dd(Auth::user());
+    @endphp --}}
     <h1 class="h3 mb-4 text-gray-800">{{ __('Profile') }}</h1>
 
     @if ($errors->any())
@@ -27,7 +30,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <h5 class="font-weight-bold">{{  Auth::user()->fullName }}</h5>
+                                <h5 class="font-weight-bold">{{  Auth::user()->name . " (" . Auth::user()->position->name . ")"}}</h5>
                                 <p>Administrator</p>
                             </div>
                         </div>
@@ -37,19 +40,19 @@
                         <div class="col-md-4">
                             <div class="card-profile-stats">
                                 <span class="heading">22</span>
-                                <span class="description">Friends</span>
+                                <span class="description">Ticket</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="card-profile-stats">
                                 <span class="heading">10</span>
-                                <span class="description">Photos</span>
+                                <span class="description">Complaint</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="card-profile-stats">
                                 <span class="heading">89</span>
-                                <span class="description">Comments</span>
+                                <span class="description">Reviews</span>
                             </div>
                         </div>
                     </div>
@@ -85,8 +88,8 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
-                                        <label class="form-control-label" for="username">Last name</label>
-                                        <input type="text" id="username" class="form-control" name="username" placeholder="Last name" value="{{ old('username', Auth::user()->username) }}">
+                                        <label class="form-control-label" for="username">Username</label>
+                                        <input type="text" id="username" class="form-control" name="username" placeholder="Username" value="{{ old('username', Auth::user()->username) }}">
                                     </div>
                                 </div>
                             </div>
@@ -120,6 +123,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <h6 class="heading-small text-muted mb-4">User information</h6>
                         </div>
 
                         <!-- Button -->

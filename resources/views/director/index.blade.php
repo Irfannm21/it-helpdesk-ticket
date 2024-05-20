@@ -6,7 +6,7 @@
 
     <!-- Main Content goes here -->
 
-    <a href="{{ route('product.create') }}" class="btn btn-primary mb-3">New Product</a>
+    <a href="{{ route('director.create') }}" class="btn btn-primary mb-3">New Product</a>
 
     @if (session('message'))
         <div class="alert alert-success">
@@ -33,8 +33,8 @@
                     <td>{{ $result->parent->name }}</td>
                     <td>
                         <div class="d-flex">
-                            <a href="{{ route('product.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
-                            <form action="{{ route('product.destroy', $result->id) }}" method="post">
+                            <a href="{{ route('director.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
+                            <form action="{{ route('director.destroy', $result->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this?')">Delete</button>
