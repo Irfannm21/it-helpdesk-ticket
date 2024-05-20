@@ -39,7 +39,7 @@
                   <label for="name">Type Product</label>
                  <select name="types" id="types" class="form-control @error('types') is-invalid @enderror" >
                   <option value="">-- Select Product --</option>
-                  <option value="Pc ">PC</option>
+                  <option value="PC ">PC</option>
                   <option value="Network">Network</option>
                   <option value="Printer">Printer</option>
                 </select>

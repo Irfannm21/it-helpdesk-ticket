@@ -33,7 +33,7 @@
                     <td>{{ $result->name }}</td>
                     <td>{{ $result->date }}</td>
                     <td>{{ $result->types }}</td>
-                    <td>{{ $result->price }}</td>
+                    <td>{{ 'Rp ' . number_format($result->price, 0, ',', '.') }}</td>
                     <td>
                         <div class="d-flex">
                             <a href="{{ route('product.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>

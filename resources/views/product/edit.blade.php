@@ -40,9 +40,9 @@
                   <label for="name">Type Product</label>
                  <select name="types" id="types" class="form-control @error('types') is-invalid @enderror" >
                   <option value="">-- Select Product --</option>
-                  <option value="Cpu ">CPU</option>
-                  <option value="Network">Network</option>
-                  <option value="Printer">Printer</option>
+                  <option value="PC" {{$record->types == "PC" ? "selected" : ''}}>PC</option>
+                  <option value="Network" {{$record->types == "Network" ? "selected" : ''}}>Network</option>
+                  <option value="Printer" {{$record->types == "Printer" ? "selected" : ''}}>Printer</option>
                 </select>
                   @error('name')
                     <span class="text-danger">{{ $message }}</span>
