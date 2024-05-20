@@ -47,7 +47,7 @@ class BasicController extends Controller
     {
         User::create([
             'name' => $request->name,
-            'last_name' => $request->last_name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
@@ -93,7 +93,7 @@ class BasicController extends Controller
             $basic->password = Hash::make($request->password);
         }
         $basic->name = $request->name;
-        $basic->last_name = $request->last_name;
+        $basic->username = $request->username;
         $basic->email = $request->email;
         $basic->save();
 

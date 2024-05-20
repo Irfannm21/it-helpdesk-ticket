@@ -4,6 +4,7 @@ use App\Http\Controllers\Organization\DeparmentController;
 use App\Http\Controllers\Organization\DirectorController;
 use App\Http\Controllers\Organization\DivisionController;
 use App\Http\Controllers\Organization\OfficeController;
+use App\Http\Controllers\Organization\PositionController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,4 +43,5 @@ Route::middleware('auth')->group(function() {
     Route::resource('director', DirectorController::class);
     Route::resource('deparment', DeparmentController::class);
     Route::resource('division', DivisionController::class);
+    Route::resource('position', PositionController::class);
 });

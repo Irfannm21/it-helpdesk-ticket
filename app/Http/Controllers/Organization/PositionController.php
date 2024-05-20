@@ -1,20 +1,21 @@
 <?php
+
 namespace App\Http\Controllers\Organization;
 
 use App\Http\Controllers\Controller;
-use App\Models\Models\Organization\StrukturOrganization;
+use App\Models\Models\Organization\Position;
 use Illuminate\Http\Request;
 
-class OfficeController extends Controller
+class PositionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('office.index', [
-            'title' => 'Main Office',
-            'result' => StrukturOrganization::where('code',"BASE")->first(),
+        return view ('position.index',[
+            'title' => "Table Position",
+            "results" => Position::paginate(10),
         ]);
     }
 

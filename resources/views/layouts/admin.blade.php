@@ -73,14 +73,16 @@
                 {{ __('Data Master') }}
             </div>
             <!-- Nav Item -->
-           
+
             <li class="nav-item {{ Nav::isRoute('product.index') }}">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="false" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-building"></i>
                     <span>Struktur Organization</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
-                    <div class="bg-white py-2 collapse-inner rounded">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                    style="">
+                    <div class="collapse-inner rounded bg-white py-2">
                         <a class="collapse-item" href="{{ route('office.index') }}">
                             <i class="fas fa-fw fa-building"></i>
                             <span>{{ __('Main Office') }}</span>
@@ -90,16 +92,24 @@
                             <span>{{ __('Directors') }}</span>
                         </a>
                         <a class="collapse-item" href="{{ route('deparment.index') }}">
-                            <i class="fas fa-fw fa-user "></i>
+                            <i class="fas fa-fw fa-user"></i>
                             <span>{{ __('Department') }}</span>
                         </a>
                         <a class="collapse-item" href="{{ route('division.index') }}">
-                            <i class="fas fa-fw fa-user "></i>
+                            <i class="fas fa-fw fa-user"></i>
                             <span>{{ __('Division') }}</span>
                         </a>
-                        
+
                     </div>
                 </div>
+            </li>
+
+            <!-- Nav Item -->
+            <li class="nav-item {{ Nav::isRoute('position.index') }}">
+                <a class="nav-link" href="{{ route('position.index') }}">
+                    <i class="fas fa-fw fa-user-graduate"></i>
+                    <span>{{ __('Position') }}</span>
+                </a>
             </li>
 
             <!-- Nav Item -->

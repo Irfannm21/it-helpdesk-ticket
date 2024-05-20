@@ -25,7 +25,7 @@ class EditUserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'last_name' => 'required',
+            'username' => 'required',
             'email' => 'required|email',
             'password' => 'nullable|min:8'
         ];

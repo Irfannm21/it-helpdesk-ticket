@@ -32,7 +32,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" name="last_name" placeholder="{{ __('Last Name') }}" value="{{ old('last_name') }}" required>
+                                        <input type="text" class="form-control form-control-user" name="username" placeholder="{{ __('Last Name') }}" value="{{ old('username') }}" required>
                                     </div>
 
                                     <div class="form-group">

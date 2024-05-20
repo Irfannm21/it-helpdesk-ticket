@@ -25,19 +25,19 @@ class OrganizationSeeder extends Seeder
             // Director
             [
                 "code" => "DIR01",
-                "name"  => "Direktur Utama",
+                "name"  => "President Director",
                 "type"  => "director",
                 "parent_id" => 1,
             ],
             [
                 "code" => "DIR02",
-                "name"  => "Direktur Operasional",
+                "name"  => "Director Of Operations",
                 "type"  => "director",
                 "parent_id" => 2,
             ],
             [
                 "code" => "DIR03",
-                "name"  => "Direktur Finance",
+                "name"  => "Director Of Finance",
                 "type"  => "director",
                 "parent_id" => 2,
             ],
@@ -94,12 +94,6 @@ class OrganizationSeeder extends Seeder
                 "parent_id" => 6,
             ],
             [
-                "code" => "DPE04",
-                "name"  => "Division Support",
-                "type"  => "division",
-                "parent_id" => 6,
-            ],
-            [
                 "code" => "DPF05",
                 "name"  => "Division Accounting",
                 "type"  => "division",
@@ -114,12 +108,6 @@ class OrganizationSeeder extends Seeder
             [
                 "code" => "DPF07",
                 "name"  => "Division Sales",
-                "type"  => "division",
-                "parent_id" => 8,
-            ],
-            [
-                "code" => "DPF08",
-                "name"  => "Division Collection",
                 "type"  => "division",
                 "parent_id" => 8,
             ],

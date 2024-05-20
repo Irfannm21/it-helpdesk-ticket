@@ -20,9 +20,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="last_name">Last Name</label>
-                  <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="last_name" placeholder="Last name" autocomplete="off" value="{{ old('last_name') }}">
-                  @error('last_name')
+                  <label for="username">Last Name</label>
+                  <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Last name" autocomplete="off" value="{{ old('username') }}">
+                  @error('username')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>

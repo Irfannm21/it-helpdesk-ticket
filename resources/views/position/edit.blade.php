@@ -8,38 +8,59 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('basic.update', $user->id) }}" method="post">
+            <form action="{{ route('product.update', $record->id) }}" method="post">
                 @csrf
                 @method('put')
 
                 <div class="form-group">
+                  <label for="code">Code</label>
+                  <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="000/ABC/II/24" autocomplete="off" value="{{ old('code') ?? $record->code }}">
+                  @error('code')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+
+                <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="First name" autocomplete="off" value="{{ old('name') ?? $user->name }}">
+                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name Product" autocomplete="off" value="{{ old('name') ?? $record->name }}">
                   @error('name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="username">Last Name</label>
-                  <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Last name" autocomplete="off" value="{{ old('username') ?? $user->username }}">
-                  @error('username')
+                  <label for="date">Date</label>
+                  <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date" placeholder="Email" autocomplete="off" value="{{ old('date') ?? $record->date }}">
+                  @error('date')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email" autocomplete="off" value="{{ old('email') ?? $user->email }}">
-                  @error('email')
+                  <label for="name">Type Product</label>
+                 <select name="types" id="types" class="form-control @error('types') is-invalid @enderror" >
+                  <option value="">-- Select Product --</option>
+                  <option value="Cpu ">CPU</option>
+                  <option value="Network">Network</option>
+                  <option value="Printer">Printer</option>
+                </select>
+                  @error('name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password" autocomplete="off">
-                  @error('password')
+                  <label for="price">Price</label>
+                  <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="20000000" autocomplete="off" value="{{ old('price') ?? $record->price }}">
+                  @error('price')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
+                  @error('description')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>

@@ -23,4 +23,8 @@ class StrukturOrganization extends Model
     public function parent() {
         return $this->belongsTo(StrukturOrganization::class, 'parent_id');
     }
+
+    public function positions() {
+        return $this->hasMany(Position::class, 'org_id');
+    }
 }
