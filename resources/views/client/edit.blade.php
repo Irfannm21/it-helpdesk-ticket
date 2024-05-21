@@ -13,6 +13,14 @@
                 @method('put')
 
                 <div class="form-group">
+                  <label for="code">Client ID</label>
+                  <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="000/POS/NO/IP" autocomplete="off" value="{{ old('code') ?? $client->code }}">
+                  @error('code')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+
+                <div class="form-group">
                   <label for="name">Name</label>
                   <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="First name" autocomplete="off" value="{{ old('name') ?? $client->name }}">
                   @error('name')
@@ -24,6 +32,19 @@
                   <label for="username">Username</label>
                   <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Username" autocomplete="off" value="{{ old('username') ?? $client->username }}">
                   @error('username')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+
+                <div class="form-group">
+                  <label for="name">Jabatan</label>
+                  <select name="position_id" id="" class="form-control">
+                    <option value="" selected>-- Select --</option>
+                    @foreach ($so as $item)
+                        <option value="{{$item->id}}" {{$item->id == $client->position_id ? 'selected' : ''}}>{{$item->name}}</option>
+                    @endforeach
+                  </select>
+                  @error('name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
@@ -72,7 +93,7 @@
   
                 <div class="form-group">
                   <label for="name">Nerwork ID</label>
-                  <select name="pc_id" id="" class="form-control">
+                  <select name="network_id" id="" class="form-control">
                     <option value="" selected>-- Select --</option>
                     @foreach ($network as $item)
                         <option value="{{$item->id}}" {{$item->id == $client->network_id ? 'selected' : ''}}>{{$item->code}}</option>
@@ -83,18 +104,6 @@
                   @enderror
                 </div>
   
-                <div class="form-group">
-                  <label for="name">Jabatan</label>
-                  <select name="position_id" id="" class="form-control">
-                    <option value="" selected>-- Select --</option>
-                    @foreach ($so as $item)
-                        <option value="{{$item->id}}" {{$item->id == $client->position_id ? 'selected' : ''}}>{{$item->name}}</option>
-                    @endforeach
-                  </select>
-                  @error('name')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="{{ route('basic.index') }}" class="btn btn-default">Back to list</a>

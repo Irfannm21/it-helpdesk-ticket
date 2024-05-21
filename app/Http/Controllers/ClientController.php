@@ -16,7 +16,7 @@ class ClientController extends Controller
     {
         return view('client.index',[
            "title" => "Table Client",
-           "results" => User::paginate(10), 
+           "results" => User::paginate(10)->whereNotNull('code'), 
         ]);  
     }
 
@@ -26,7 +26,7 @@ class ClientController extends Controller
     public function create()
     {
         return view('client.create', [
-            'title' => 'New User',
+            'title' => 'New Client',
             'users' => User::paginate(10),
             "pc" => Product::where('types','PC')->get(),
             "printer" => Product::where('types','Printer')->get(),
@@ -58,7 +58,7 @@ class ClientController extends Controller
     public function edit(User $client)
     {
         return view('client.edit', [
-            'title' => 'Edit User',
+            'title' => 'Edit Client',
             'client' => $client,
             "pc" => Product::where('types','PC')->get(),
             "printer" => Product::where('types','Printer')->get(),
@@ -79,8 +79,8 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $client)
     {
-        //
+        return $client->handleDestroy();
     }
 }

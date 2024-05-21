@@ -6,7 +6,7 @@
 
     <!-- Main Content goes here -->
 
-    <a href="{{ route('client.create') }}" class="btn btn-primary mb-3">New Clientx</a>
+    <a href="{{ route('client.create') }}" class="btn btn-primary mb-3">New Client</a>
 
     @if (session('message'))
         <div class="alert alert-success">
@@ -18,9 +18,9 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Client ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Position</th>
                 <th>PC ID</th>
                 <th>Printer ID</th>
                 <th>Network ID</th>
@@ -32,9 +32,9 @@
             @foreach ($results as $user)
                 <tr>
                     <td scope="row">{{ $loop->iteration }}</td>
-                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->code ?? ' - ' }}</td>
+                    <td>{{ $user->name . " (" . $user->position->name . ")" }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->position->name ?? ' - ' }}</td>
                     <td>{{ $user->pc->code ?? ' - ' }}</td>
                     <td>{{ $user->printer->code ?? ' - ' }}</td>
                     <td>{{ $user->network->code ?? ' - ' }}</td>

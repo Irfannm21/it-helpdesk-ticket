@@ -4,13 +4,14 @@ namespace App;
 
 use App\Models\Models\Organization\Position;
 use App\Models\Product;
+use App\Models\Traits\ResponseTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, ResponseTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password','pc_id', 'printer_id', 'network_id',
+        'name', 'username', 'email', 'password','code',"position_id",'pc_id', 'printer_id', 'network_id',
     ];
 
     /**

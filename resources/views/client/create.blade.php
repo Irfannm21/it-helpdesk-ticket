@@ -12,8 +12,29 @@
               @csrf
 
               <div class="form-group">
+                <label for="code">Client ID</label>
+                <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="000/POS/NO/IP" autocomplete="off" value="{{ old('code') }}">
+                @error('code')
+                  <span class="text-danger">{{ $message }}</span>
+                @enderror
+              </div>
+
+              <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="First name" autocomplete="off" value="{{ old('name') }}">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name" autocomplete="off" value="{{ old('name') }}">
+                @error('name')
+                  <span class="text-danger">{{ $message }}</span>
+                @enderror
+              </div>
+
+              <div class="form-group">
+                <label for="name">Position</label>
+                <select name="position_id" id="" class="form-control">
+                  <option value="" selected>-- Select --</option>
+                  @foreach ($so as $item)
+                      <option value="{{$item->id}}">{{$item->name}}</option>
+                  @endforeach
+                </select>
                 @error('name')
                   <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -71,23 +92,10 @@
 
               <div class="form-group">
                 <label for="name">Nerwork ID</label>
-                <select name="pc_id" id="" class="form-control">
+                <select name="network_id" id="" class="form-control">
                   <option value="" selected>-- Select --</option>
                   @foreach ($network as $item)
                       <option value="{{$item->id}}">{{$item->code}}</option>
-                  @endforeach
-                </select>
-                @error('name')
-                  <span class="text-danger">{{ $message }}</span>
-                @enderror
-              </div>
-
-              <div class="form-group">
-                <label for="name">Jabatan</label>
-                <select name="position_id" id="" class="form-control">
-                  <option value="" selected>-- Select --</option>
-                  @foreach ($so as $item)
-                      <option value="{{$item->id}}">{{$item->name}}</option>
                   @endforeach
                 </select>
                 @error('name')

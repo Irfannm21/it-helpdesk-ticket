@@ -17,6 +17,7 @@ class UsersSeeder extends Seeder
             [
                 'name' => 'Irfan',
                 'username' => 'irfan',
+                'code' => '001/DIR/01/51',
                 'email' => 'irfan@mail.com',
                 'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -28,9 +29,11 @@ class UsersSeeder extends Seeder
             [
                 'name' => 'Nur Muhannad',
                 'username' => 'nur',
+                'code' => '002/DIR/02/52',
                 'email' => 'nur@mail.com',
                 'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                "position_id" => 2,
                 'pc_id' => 2, 
                 "printer_id" => 12,
                 "network_id" => 17,
@@ -38,9 +41,11 @@ class UsersSeeder extends Seeder
             [
                 'name' => 'Yudi Hadiandi',
                 'username' => 'yudi',
+                'code' => '002/DIR/03/53',
                 'email' => 'yudi@mail.com',
                 'email_verified_at' => now(),
                 'password'   => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                "position_id" => 3,
                 'pc_id'      => 3, 
                 "printer_id" => 13,
                 "network_id" => 18,
@@ -53,6 +58,7 @@ class UsersSeeder extends Seeder
             );
 
             $result->username = $val['username'];
+            $result->code = $val['code'];
             $result->email = $val['email'];
             $result->email_verified_at = $val['email_verified_at'];
             $result->password = $val['password'];
