@@ -24,7 +24,11 @@ class Product extends Model
 
             // return $this->commitSaved();
             $this->commitSaved();
-            return redirect()->route('product.index')->with('message', 'User added successfully!');
+            if(request()->route()->getName() == 'product.store') {
+                return redirect()->route('product.index')->with('message', 'Product added successfully!');
+            } else {
+                return redirect()->route('product.index')->with('message', 'Product Upddated successfully!');
+            }
         } catch (\Exception $e) {
             return $this->rollbackSaved($e);
         }
