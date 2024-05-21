@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Master\PositionRequest;
 use App\Models\Models\Organization\Position;
 use App\Models\Models\Organization\StrukturOrganization;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class PositionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PositionRequest $request)
     {
         $record = new Position;
         return $record->handleStoreOrUpdate($request);
@@ -63,7 +64,7 @@ class PositionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Position $position)
+    public function update(PositionRequest $request, Position $position)
     {
         return $position->handleStoreOrUpdate($request);
     }

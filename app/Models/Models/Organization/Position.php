@@ -26,10 +26,12 @@ class Position extends Model
         try {
             $this->fill($request->all());
             $this->save();
-
-            // return $this->commitSaved();
             $this->commitSaved();
-            return redirect()->route('position.index')->with('message', 'Position added successfully!');
+            if(request()->route()->getName() == 'position.store') {
+                return redirect()->route('position.index')->with('message', 'Position added successfully!');
+            } else {
+                return redirect()->route('position.index')->with('message', 'Position Upddated successfully!');
+            }
         } catch (\Exception $e) {
             return $this->rollbackSaved($e);
         }
