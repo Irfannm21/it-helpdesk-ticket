@@ -59,7 +59,7 @@
 
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password" autocomplete="off">
+                  <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password" autocomplete="off" value="{{  $client->password }}">
                   @error('password')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Master\ClientRequest;
 use App\Models\Models\Organization\Position;
 use App\Models\Product;
 use App\User;
@@ -38,7 +39,7 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
         $record = new User;
         return $record->handleStoreOrUpdate($request);
@@ -70,10 +71,9 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ClientRequest $request, User $client)
     {
-        $record = new User;
-        return $record->handleStoreOrUpdate($request);
+        return $client->handleStoreOrUpdate($request);
     }
 
     /**

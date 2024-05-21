@@ -8,6 +8,7 @@ use App\Models\Traits\ResponseTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -74,11 +75,14 @@ class User extends Authenticatable
         $this->beginTransaction();
         try {
             $this->fill($request->all());
+            $this->password = Hash::make($request->password);
             $this->save();
-
-            // return $this->commitSaved();
             $this->commitSaved();
-            return redirect()->route('client.index')->with('message', 'Client added successfully!');
+            if(request()->route()->getName() == 'client.store') {
+                return redirect()->route('client.index')->with('message', 'Client added successfully!');
+            } else {
+                return redirect()->route('client.index')->with('message', 'Client Updated successfully!');
+            }
         } catch (\Exception $e) {
             return $this->rollbackSaved($e);
         }
