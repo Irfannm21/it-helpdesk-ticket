@@ -15,8 +15,10 @@ class ProductRequest extends FormRequest
     }
     public function rules(): array
     {
+        $id = $this->product->id ?? 0;
+
         return [
-            'code' => 'required|min:13|max:13|',
+            'code' => 'required|min:3|max:13|unique:ref_product,code,'.$id.',id',
             'name' => 'required|min:1|max:200|',
             'date' => 'required',
             'types' => 'required',

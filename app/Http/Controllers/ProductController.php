@@ -35,8 +35,8 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $record = new Product;
-        return $record->handleStoreOrUpdate($request);
+        $product = new Product;
+        return $product->handleStoreOrUpdate($request);
     }
 
     /**
@@ -50,13 +50,11 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        $record = Product::find($id);
-
         return view('product.edit',[
             'title' => 'Update Product',
-            'record' => $record,
+            'product' => $product,
         ]);
 
     }
@@ -64,18 +62,17 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProductRequest $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        $record = Product::find($id);
-         return $record->handleStoreOrUpdate($request);
+         return $product->handleStoreOrUpdate($request);    $product = Product::find($id);
+    
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        $record = Product::find($id);
-        return $record->handleDestroy();
+        return $product->handleDestroy();
     }
 }

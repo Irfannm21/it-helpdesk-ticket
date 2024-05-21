@@ -8,13 +8,13 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('product.update', $record->id) }}" method="post">
+            <form action="{{ route('product.update', $product->id) }}" method="post">
                 @csrf
                 @method('put')
 
                 <div class="form-group">
                   <label for="code">Code</label>
-                  <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="000/ABC/II/24" autocomplete="off" value="{{ old('code') ?? $record->code }}">
+                  <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="000/ABC/II/24" autocomplete="off" value="{{ old('code') ?? $product->code }}">
                   @error('code')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -22,7 +22,7 @@
 
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name Product" autocomplete="off" value="{{ old('name') ?? $record->name }}">
+                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name Product" autocomplete="off" value="{{ old('name') ?? $product->name }}">
                   @error('name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                   <label for="date">Date</label>
-                  <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date" placeholder="Email" autocomplete="off" value="{{ old('date') ?? $record->date }}">
+                  <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date" placeholder="Email" autocomplete="off" value="{{ old('date') ?? $product->date }}">
                   @error('date')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -40,9 +40,9 @@
                   <label for="name">Type Product</label>
                  <select name="types" id="types" class="form-control @error('types') is-invalid @enderror" >
                   <option value="">-- Select Product --</option>
-                  <option value="PC" {{$record->types == "PC" ? "selected" : ''}}>PC</option>
-                  <option value="Network" {{$record->types == "Network" ? "selected" : ''}}>Network</option>
-                  <option value="Printer" {{$record->types == "Printer" ? "selected" : ''}}>Printer</option>
+                  <option value="PC" {{$product->types == "PC" ? "selected" : ''}}>PC</option>
+                  <option value="Network" {{$product->types == "Network" ? "selected" : ''}}>Network</option>
+                  <option value="Printer" {{$product->types == "Printer" ? "selected" : ''}}>Printer</option>
                 </select>
                   @error('name')
                     <span class="text-danger">{{ $message }}</span>
@@ -51,7 +51,7 @@
 
                 <div class="form-group">
                   <label for="price">Price</label>
-                  <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="20000000" autocomplete="off" value="{{ old('price') ?? $record->price }}">
+                  <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="20000000" autocomplete="off" value="{{ old('price') ?? $product->price }}">
                   @error('price')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
