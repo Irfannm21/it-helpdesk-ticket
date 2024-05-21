@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Master\SoRequest;
 use App\Models\Models\Organization\StrukturOrganization;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ class DivisionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SoRequest $request)
     {
         $record = new StrukturOrganization;
         return $record->handleStoreOrUpdate($request);
@@ -62,7 +63,7 @@ class DivisionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, StrukturOrganization $division)
+    public function update(SoRequest $request, StrukturOrganization $division)
     {
         return $division->handleStoreOrUpdate($request);
     }

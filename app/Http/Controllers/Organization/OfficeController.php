@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Master\SoRequest;
 use App\Models\Models\Organization\StrukturOrganization;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class OfficeController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -45,17 +46,20 @@ class OfficeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(StrukturOrganization $office)
     {
-        //
+        return view('office.edit', [
+            'title' => 'Main Office',
+            'office' => $office,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SoRequest $request, StrukturOrganization $office)
     {
-        //
+        return $office->handleStoreOrUpdate($request);
     }
 
     /**

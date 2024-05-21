@@ -8,8 +8,10 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('department.store') }}" method="post">
+            <form action="{{ route('director.store') }}" method="post">
                 @csrf
+                
+                <input type="text" name="type" value="director" hidden>
 
                 <div class="form-group">
                   <label for="code">Code</label>
@@ -28,7 +30,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="name">Name</label>
+                  <label for="name">Parent  ID</label>
                   <select name="parent_id" id="" class="form-control">
                     <option value="" selected>-- Select --</option>
                     @foreach ($parents as $item)
@@ -45,7 +47,7 @@
                
 
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('basic.index') }}" class="btn btn-default">Back to list</a>
+                <a href="{{ route('director.index') }}" class="btn btn-default">Back to list</a>
 
             </form>
         </div>

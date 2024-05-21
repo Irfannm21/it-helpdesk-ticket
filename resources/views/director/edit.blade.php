@@ -12,6 +12,9 @@
                 @csrf
                 @method('put')
 
+                <input type="text" name="type" value="director" hidden>
+                <input type="text" name="id" value="{{$director->id}}" hidden>
+
                 <div class="form-group">
                   <label for="code">Code</label>
                   <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="000/ABC/II/24" autocomplete="off" value="{{ old('code') ?? $director->code }}">
@@ -31,7 +34,7 @@
 
                 <div class="form-group">
                   <label for="name">Parent</label>
-                 <select name="types" id="types" class="form-control @error('types') is-invalid @enderror" >
+                 <select name="parent_id" id="parent_id" class="form-control @error('parent_id') is-invalid @enderror" >
                   <option value="" selected>-- Select --</option>
                   @foreach ($parents as $item)
                       <option value="{{$item->id}}" {{$item->id == $director->parent_id ? 'selected' : ''}}>{{$item->name}}</option>
@@ -43,7 +46,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('basic.index') }}" class="btn btn-default">Back to list</a>
+                <a href="{{ route('director.index') }}" class="btn btn-default">Back to list</a>
 
             </form>
         </div>

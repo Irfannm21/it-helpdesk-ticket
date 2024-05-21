@@ -33,12 +33,35 @@ class StrukturOrganization extends Model
         $this->beginTransaction();
         try {
             $this->fill($request->all());
-            $this->type = "director";
             $this->save();
 
-            // return $this->commitSaved();
             $this->commitSaved();
-            return redirect()->route('director.index')->with('message', 'Struktur added successfully!');
+            // dd($this,request()->route());
+            switch (request()->route()->getName()) {
+                case 'director.store':
+                    return redirect()->route('director.index')->with('message', 'Added Director successfully!');
+                    break;
+                case 'director.update':
+                    return redirect()->route('director.index')->with('message', 'Director Updated successfully!');
+                    break;
+                case 'department.store':
+                    return redirect()->route('department.index')->with('message', 'Added Department successfully!');
+                    break;
+                case 'department.update':
+                    return redirect()->route('department.index')->with('message', 'Department Updated successfully!');
+                    break;
+                case 'division.store':
+                    return redirect()->route('division.index')->with('message', 'Added Division successfully!');
+                    break;
+                case 'division.update':
+                    return redirect()->route('division.index')->with('message', 'Division Updated successfully!');
+                    break;
+                
+                default:
+                    return redirect()->route('office.index')->with('message', 'Office Updated successfully!');
+                    break;
+            }
+
         } catch (\Exception $e) {
             return $this->rollbackSaved($e);
         }
@@ -46,11 +69,22 @@ class StrukturOrganization extends Model
 
     public function handleDestroy()
     {
+    
         $this->beginTransaction();
         try {
             $this->delete();
             $this->commitDeleted();
-            return redirect()->route('director.index')->with('message', 'Delete Structur successfully!');
+            switch (request()->route()->getName()) {
+                case 'director.destroy':
+                    return redirect()->route('director.index')->with('message', 'Delete Director successfully');
+                    break;
+                case 'department.destroy':
+                    return redirect()->route('department.index')->with('message', 'Delete Department successfully');
+                    break;
+                default:
+                    return redirect()->route('division.index')->with('message', 'Delete Division successfully');
+                    break;
+                }
         } catch (\Exception $e) {
             return $this->rollbackDeleted($e);
         }

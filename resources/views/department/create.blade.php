@@ -8,8 +8,10 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('director.store') }}" method="post">
+            <form action="{{ route('department.store') }}" method="post">
                 @csrf
+
+                <input type="text" name="type" value="department" hidden>
 
                 <div class="form-group">
                   <label for="code">Code</label>
@@ -45,7 +47,7 @@
                
 
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('basic.index') }}" class="btn btn-default">Back to list</a>
+                <a href="{{ route('department.index') }}" class="btn btn-default">Back to list</a>
 
             </form>
         </div>

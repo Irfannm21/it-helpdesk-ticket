@@ -5,6 +5,11 @@
     <h1 class="h3 mb-4 text-gray-800">{{ $title ?? __('Blank Page') }}</h1>
 
     <!-- Main Content goes here -->
+    @if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+    @endif
 
     <table class="table table-bordered table-stripped">
         <thead>
@@ -26,7 +31,7 @@
                     <td>{{ $result->address }}</td>
                     <td>
                         <div class="d-flex">
-                            <a href="{{ route('product.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
+                            <a href="{{ route('office.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
                         </div>
                     </td>
                 </tr>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Master\DirectorRequest;
+use App\Http\Requests\Master\SoRequest;
 use App\Models\Models\Organization\StrukturOrganization;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class DeparmentController extends Controller
     {
         return view('department.index',[
             "title" => "Table Department",
-            "results" => StrukturOrganization::where('type',"director")->get(),
+            "results" => StrukturOrganization::where('type',"department")->get(),
         ]);
     }
 
@@ -26,14 +28,14 @@ class DeparmentController extends Controller
     {
         return view('department.create',[
             "title" => "New Department",
-            'parents' => StrukturOrganization::where('type','director')->get(),
+            'parents' => StrukturOrganization::where('type','department')->get(),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SoRequest $request)
     {
         $record = new StrukturOrganization;
         return $record->handleStoreOrUpdate($request);
@@ -50,28 +52,28 @@ class DeparmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(StrukturOrganization $director)
+    public function edit(StrukturOrganization $department)
     {
         return view('department.edit',[
             "title" => "Edit Department",
-            'director' => $director,
-            'parents' => StrukturOrganization::where('type','director')->get(),
+            'department' => $department,
+            'parents' => StrukturOrganization::where('type','department')->get(),
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, StrukturOrganization $director)
+    public function update(SoRequest $request, StrukturOrganization $department)
     {
-        return $director->handleStoreOrUpdate($request);
+        return $department->handleStoreOrUpdate($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(StrukturOrganization $director)
+    public function destroy(StrukturOrganization $department)
     {
-        return $director->handleDestroy();
+        return $department->handleDestroy();
     }
 }

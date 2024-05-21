@@ -30,7 +30,7 @@
                     <td scope="row">{{ $loop->iteration }}</td>
                     <td>{{ $result->code }}</td>
                     <td>{{ $result->name }}</td>
-                    <td>{{ $result->parent->name }}</td>
+                    <td>{{ $result->parent->name ?? '' }}</td>
                     <td>
                         <div class="d-flex">
                             <a href="{{ route('director.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>

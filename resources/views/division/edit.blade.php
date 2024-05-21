@@ -8,9 +8,11 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('director.update', $division->id) }}" method="post">
+            <form action="{{ route('division.update', $division->id) }}" method="post">
                 @csrf
                 @method('put')
+
+                <input type="text" name="type" value="division" hidden>
 
                 <div class="form-group">
                   <label for="code">Code</label>
@@ -31,19 +33,19 @@
 
                 <div class="form-group">
                   <label for="name">Parent</label>
-                 <select name="types" id="types" class="form-control @error('types') is-invalid @enderror" >
+                 <select name="parent_id" id="parent_id" class="form-control @error('parent_id') is-invalid @enderror" >
                   <option value="" selected>-- Select --</option>
                   @foreach ($parents as $item)
                       <option value="{{$item->id}}" {{$item->id == $division->parent_id ? 'selected' : ''}}>{{$item->name}}</option>
                   @endforeach
                 </select>
-                  @error('name')
+                  @error('parent_id')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('basic.index') }}" class="btn btn-default">Back to list</a>
+                <a href="{{ route('division.index') }}" class="btn btn-default">Back to list</a>
 
             </form>
         </div>
