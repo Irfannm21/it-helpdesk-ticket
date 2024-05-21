@@ -7,6 +7,7 @@ use App\Http\Controllers\Organization\DivisionController;
 use App\Http\Controllers\Organization\OfficeController;
 use App\Http\Controllers\Organization\PositionController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,4 +47,5 @@ Route::middleware('auth')->group(function() {
     Route::resource('division', DivisionController::class);
     Route::resource('position', PositionController::class);
     Route::resource('client', ClientController::class);
+    Route::resource('ticket', TicketController::class);
 });

@@ -52,19 +52,45 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>{{ __('Dashboard') }}</span></a>
             </li>
-            {{-- <hr class="sidebar-divider">
+            <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
                 {{ __('Client Menu  ') }}
             </div>
 
             <!-- Nav Item -->
-            <li class="nav-item {{ Nav::isRoute('product.index') }}">
-                <a class="nav-link" href="{{ route('product.index') }}">
-                    <i class="fas fa-fw fa-plus"></i>
+            <li class="nav-item {{ Nav::isRoute('ticket.index') }}">
+                <a class="nav-link" href="{{ route('ticket.index') }}">
+                    <i class="fas fa-fw fa-calendar-check"></i>
                     <span>{{ __('Ticket') }}</span>
                 </a>
-            </li> --}}
+            </li>
+            <li class="nav-item {{ Nav::isRoute('product.index') }}">
+                <a class="nav-link" href="{{ route('product.index') }}">
+                    <i class="fas fa-fw fa-star"></i>
+                    <span>{{ __('Review') }}</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                {{ __('Technician Menu  ') }}
+            </div>
+
+            <!-- Nav Item -->
+            <li class="nav-item {{ Nav::isRoute('product.index') }}">
+                <a class="nav-link" href="{{ route('product.index') }}">
+                    <i class="fas fa-fw fa-calendar-check"></i>
+                    <span>{{ __('Workplan') }}</span>
+                </a>
+            </li>
+            <li class="nav-item {{ Nav::isRoute('product.index') }}">
+                <a class="nav-link" href="{{ route('product.index') }}">
+                    <i class="fas fa-fw fa-star"></i>
+                    <span>{{ __('Realization') }}</span>
+                </a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
