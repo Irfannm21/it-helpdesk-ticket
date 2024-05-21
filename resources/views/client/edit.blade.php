@@ -8,21 +8,21 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('basic.update', $user->id) }}" method="post">
+            <form action="{{ route('client.update', $client->id) }}" method="post">
                 @csrf
                 @method('put')
 
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="First name" autocomplete="off" value="{{ old('name') ?? $user->name }}">
+                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="First name" autocomplete="off" value="{{ old('name') ?? $client->name }}">
                   @error('name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="username">Last Name</label>
-                  <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Username" autocomplete="off" value="{{ old('username') ?? $user->username }}">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Username" autocomplete="off" value="{{ old('username') ?? $client->username }}">
                   @error('username')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email" autocomplete="off" value="{{ old('email') ?? $user->email }}">
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email" autocomplete="off" value="{{ old('email') ?? $client->email }}">
                   @error('email')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -40,6 +40,58 @@
                   <label for="password">Password</label>
                   <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password" autocomplete="off">
                   @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+
+                <div class="form-group">
+                  <label for="name">PC ID</label>
+                  <select name="pc_id" id="" class="form-control">
+                    <option value="" selected>-- Select --</option>
+                    @foreach ($pc as $item)
+                        <option value="{{$item->id}}"{{$item->id == $client->pc_id ? 'selected' : ''}}>{{$item->code}}</option>
+                    @endforeach
+                  </select>
+                  @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+  
+                <div class="form-group">
+                  <label for="name">Printer ID</label>
+                  <select name="printer_id" id="" class="form-control">
+                    <option value="" selected>-- Select --</option>
+                    @foreach ($printer as $item)
+                        <option value="{{$item->id}}" {{$item->id == $client->printer_id ? 'selected' : ''}} >{{$item->code}}</option>
+                    @endforeach
+                  </select>
+                  @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+  
+                <div class="form-group">
+                  <label for="name">Nerwork ID</label>
+                  <select name="pc_id" id="" class="form-control">
+                    <option value="" selected>-- Select --</option>
+                    @foreach ($network as $item)
+                        <option value="{{$item->id}}" {{$item->id == $client->network_id ? 'selected' : ''}}>{{$item->code}}</option>
+                    @endforeach
+                  </select>
+                  @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+  
+                <div class="form-group">
+                  <label for="name">Jabatan</label>
+                  <select name="position_id" id="" class="form-control">
+                    <option value="" selected>-- Select --</option>
+                    @foreach ($so as $item)
+                        <option value="{{$item->id}}" {{$item->id == $client->position_id ? 'selected' : ''}}>{{$item->name}}</option>
+                    @endforeach
+                  </select>
+                  @error('name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>

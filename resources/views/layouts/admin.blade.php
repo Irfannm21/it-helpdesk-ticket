@@ -78,7 +78,7 @@
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="false" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-building"></i>
-                    <span>Struktur Organization</span>
+                    <span>Structure Organization</span>
                 </a>
                 <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
@@ -124,7 +124,7 @@
               <li class="nav-item {{ Nav::isRoute('client.index') }}">
                 <a class="nav-link" href="{{ route('client.index') }}">
                     <i class="fas fa-fw fa-desktop"></i>
-                    <span>{{ __('Client') }}</span>
+                    <span>{{ __('User Client') }}</span>
                 </a>
             </li>
             <!-- Divider -->

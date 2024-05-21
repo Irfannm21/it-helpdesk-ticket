@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Models\Organization\Position;
+use App\Models\Product;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -23,7 +25,14 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.create', [
+            'title' => 'New User',
+            'users' => User::paginate(10),
+            "pc" => Product::where('types','PC')->get(),
+            "printer" => Product::where('types','Printer')->get(),
+            "network" => Product::where('types','Network')->get(),  
+            "so" => Position::all(),
+        ]);
     }
 
     /**
@@ -31,7 +40,8 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $record = new User;
+        return $record->handleStoreOrUpdate($request);
     }
 
     /**
@@ -45,9 +55,16 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $client)
     {
-        //
+        return view('client.edit', [
+            'title' => 'Edit User',
+            'client' => $client,
+            "pc" => Product::where('types','PC')->get(),
+            "printer" => Product::where('types','Printer')->get(),
+            "network" => Product::where('types','Network')->get(),
+            "so" => Position::all(),
+        ]);
     }
 
     /**
@@ -55,7 +72,8 @@ class ClientController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $record = new User;
+        return $record->handleStoreOrUpdate($request);
     }
 
     /**

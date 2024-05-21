@@ -68,5 +68,32 @@ class User extends Authenticatable
         return "{$this->name} {$this->username}";
     }
 
+    public function handleStoreOrUpdate($request)
+    {
+        $this->beginTransaction();
+        try {
+            $this->fill($request->all());
+            $this->save();
+
+            // return $this->commitSaved();
+            $this->commitSaved();
+            return redirect()->route('client.index')->with('message', 'Client added successfully!');
+        } catch (\Exception $e) {
+            return $this->rollbackSaved($e);
+        }
+    }
+
+    public function handleDestroy()
+    {
+        $this->beginTransaction();
+        try {
+            $this->delete();
+            $this->commitDeleted();
+            return redirect()->route('client.index')->with('message', 'Delete Client successfully!');
+        } catch (\Exception $e) {
+            return $this->rollbackDeleted($e);
+        }
+    }
+
 
 }

@@ -4,17 +4,18 @@ namespace App\Http\Controllers\Organization;
 
 use App\Http\Controllers\Controller;
 use App\Models\Models\Organization\Position;
+use App\Models\Models\Organization\StrukturOrganization;
 use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
-    /**
+       /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view ('position.index',[
-            'title' => "Table Position",
+        return view('position.index',[
+            "title" => "Table Position",
             "results" => Position::paginate(10),
         ]);
     }
@@ -24,7 +25,10 @@ class PositionController extends Controller
      */
     public function create()
     {
-        //
+        return view('position.create',[
+            "title" => "New Position",
+            'parents' => StrukturOrganization::all(),
+        ]);
     }
 
     /**
@@ -32,7 +36,8 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $record = new Position;
+        return $record->handleStoreOrUpdate($request);
     }
 
     /**
@@ -46,24 +51,28 @@ class PositionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Position $position)
     {
-        //
+        return view('position.edit',[
+            "title" => "Edit Position",
+            'position' => $position,
+            'parents' => StrukturOrganization::all(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Position $position)
     {
-        //
+        return $position->handleStoreOrUpdate($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Position $position)
     {
-        //
+        return $position->handleDestroy();
     }
 }

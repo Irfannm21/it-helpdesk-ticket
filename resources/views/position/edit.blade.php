@@ -8,21 +8,13 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('department.update', $department->id) }}" method="post">
+            <form action="{{ route('position.update', $position->id) }}" method="post">
                 @csrf
                 @method('put')
 
                 <div class="form-group">
-                  <label for="code">Code</label>
-                  <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="000/ABC/II/24" autocomplete="off" value="{{ old('code') ?? $department->code }}">
-                  @error('code')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
-
-                <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name Product" autocomplete="off" value="{{ old('name') ?? $department->name }}">
+                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name Product" autocomplete="off" value="{{ old('name') ?? $position->name }}">
                   @error('name')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -31,10 +23,10 @@
 
                 <div class="form-group">
                   <label for="name">Parent</label>
-                 <select name="types" id="types" class="form-control @error('types') is-invalid @enderror" >
+                 <select name="org_id" id="types" class="form-control @error('types') is-invalid @enderror" >
                   <option value="" selected>-- Select --</option>
                   @foreach ($parents as $item)
-                      <option value="{{$item->id}}" {{$item->id == $department->parent_id ? 'selected' : ''}}>{{$item->name}}</option>
+                      <option value="{{$item->id}}" {{$item->id == $position->org_id ? 'selected' : ''}}>{{$item->name}}</option>
                   @endforeach
                 </select>
                   @error('name')

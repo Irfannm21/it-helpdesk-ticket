@@ -6,7 +6,7 @@
 
     <!-- Main Content goes here -->
 
-    <a href="{{ route('basic.create') }}" class="btn btn-primary mb-3">New User</a>
+    <a href="{{ route('client.create') }}" class="btn btn-primary mb-3">New Clientx</a>
 
     @if (session('message'))
         <div class="alert alert-success">
@@ -20,6 +20,7 @@
                 <th>No</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Position</th>
                 <th>PC ID</th>
                 <th>Printer ID</th>
                 <th>Network ID</th>
@@ -33,13 +34,14 @@
                     <td scope="row">{{ $loop->iteration }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td>{{ $user->position->name ?? ' - ' }}</td>
                     <td>{{ $user->pc->code ?? ' - ' }}</td>
                     <td>{{ $user->printer->code ?? ' - ' }}</td>
                     <td>{{ $user->network->code ?? ' - ' }}</td>
                     <td>
                         <div class="d-flex">
-                            <a href="{{ route('basic.edit', $user->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
-                            <form action="{{ route('basic.destroy', $user->id) }}" method="post">
+                            <a href="{{ route('client.edit', $user->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
+                            <form action="{{ route('client.destroy', $user->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this?')">Delete</button>
