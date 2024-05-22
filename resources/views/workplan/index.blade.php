@@ -6,7 +6,7 @@
 
     <!-- Main Content goes here -->
 
-    <a href="{{ route('ticket.create') }}" class="btn btn-primary mb-3">New Ticket</a>
+    {{-- <a href="{{ route('ticket.create') }}" class="btn btn-primary mb-3">New Ticket</a> --}}
 
     @if (session('message'))
         <div class="alert alert-success">
@@ -18,11 +18,11 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Code</th>
-                <th>Date Time</th>
-                <th>Client Name</th>
-                <th>Client ID</th>
-                <th>Description</th>
+                <th>Ticket ID</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Description</th> 
+                <th>Technician Name</th> 
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -31,21 +31,26 @@
             @foreach ($results as $result)
                 <tr>
                     <td scope="row">{{ $loop->iteration }}</td>
-                    <td>{{ $result->code }}</td>
-                    <td>{{ $result->datetime->format('d-m-Y')}} <br> {{$result->datetime->format('H : i') }}</td>
-                    <td>{{ $result->client->name }}</td>
-                    <td>{{ $result->client->code ?? '' }}</td>
-                    <td>{{ $result->description }}</td>
+                    <td>{{ $result->ticket->code }}</td>
+                    <td>{{ $result->ticket->client->name }} <br>{{ $result->ticket->client->code }} </td>
+                    <td>{{ $result->ticket->datetime->format('d-m-Y')}} <br> {{$result->ticket->datetime->format('H : i') }}</td>
+                    <td>
+                        {!! $result->getDescriptionRaw($result->ticket->description) !!}
+                    </td>
+                    <td>{{ $result->description ?? '' }}</td>
                     <td>{{ $result->status }}</td>
                     <td>
                         <div class="d-flex">
-                            @if ($result->status == "Draft")
-                            <a href="{{ route('ticket.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
-                            <form action="{{ route('ticket.destroy', $result->id) }}" method="post">
+                            @if ($result->status == "New")
+                            <a href="{{ route('workplan.edit',$result->id) }}" class="btn btn-sm btn-success mr-2">Instuction</a>
+                            
+                            @elseif($result->status == "Draft") 
+                            <a href="{{ route('workplan.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
+                            {{-- <form action="{{ route('workplan.destroy', $result->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this?')">Delete</button>
-                            </form>
+                            </form> --}}
                             @endif
                         </div>
                     </td>

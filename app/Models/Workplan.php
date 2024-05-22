@@ -3,34 +3,35 @@
 namespace App\Models;
 
 use App\Models\Model;
-use App\Models\Workplan;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Facades\Auth;
 
-class Ticket extends Model
+
+class Workplan extends Model
 {
-    protected $table = 'trans_ticket';
-
+    protected $table = "trans_workplan";
+    
     protected $fillable = [
-        'code',
-        'client_id',
-        'datetime',
+        'technician_id',
+        'ticket_id',
+        'started',
+        'finished',
         'description',
         'status',
     ];
 
     protected $casts = [
-        'datetime' => 'datetime',
+        'started' => 'datetime',
+        'finished' => 'datetime'
     ];
 
-    public function client() {
-        return $this->belongsTo(User::class, 'client_id');
+    public function ticket() {
+        return $this->belongsTo(Ticket::class,'ticket_id');
     }
 
-    public function workplan() {
-        return $this->hasOne(Workplan::class,'ticket_id');
+    public function user() {
+        return $this->belongsTo(User::class,'technician_id');
     }
 
     public function handleStoreOrUpdate($request)
@@ -38,12 +39,9 @@ class Ticket extends Model
         $this->beginTransaction();
         try {
             $this->fill($request->all());
-            $ticket = Ticket::count();
-            $this->datetime = Carbon::create('now', 'Asia/Jakarta');
-            $this->client_id = Auth::user()->id;
-            $this->code = $ticket + 1 . '/'. $this->datetime->format('M') . '/' . $this->datetime->format('Y') ;
             if($request->action == "submit") {
-                $this->status = "Completed";
+                $this->started = $request->date ." ". $request->started . ":00";
+                $this->finished = $request->date ." ". $request->finished . ":00";
                 $this->save();
                 $workplan = Workplan::firstOrNew(
                     [
@@ -54,15 +52,17 @@ class Ticket extends Model
                 $workplan->save();
             } else {
                 $this->status = "Draft";    
+                $this->started = $request->date ." ". $request->started . ":00";
+                $this->finished = $request->date ." ". $request->finished . ":00";
                 $this->save();
             }
             // dd($this->action);
             // return $this->commitSaved();
             $this->commitSaved();
-            if(request()->route()->getName() == 'ticket.store') {
-                return redirect()->route('ticket.index')->with('message', 'Ticket added successfully!');
+            if(request()->route()->getName() == 'workplan.store') {
+                return redirect()->route('workplan.index')->with('message', 'Workplan added successfully!');
             } else {
-                return redirect()->route('ticket.index')->with('message', 'Ticket Upddated successfully!');
+                return redirect()->route('workplan.index')->with('message', 'Workplan Upddated successfully!');
             }
         } catch (\Exception $e) {
             return $this->rollbackSaved($e);
@@ -80,5 +80,4 @@ class Ticket extends Model
             return $this->rollbackDeleted($e);
         }
     }
-
 }

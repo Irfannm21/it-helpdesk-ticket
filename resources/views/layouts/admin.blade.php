@@ -79,8 +79,8 @@
             </div>
 
             <!-- Nav Item -->
-            <li class="nav-item {{ Nav::isRoute('product.index') }}">
-                <a class="nav-link" href="{{ route('product.index') }}">
+            <li class="nav-item {{ Nav::isRoute('workplan.index') }}">
+                <a class="nav-link" href="{{ route('workplan.index') }}">
                     <i class="fas fa-fw fa-calendar-check"></i>
                     <span>{{ __('Workplan') }}</span>
                 </a>

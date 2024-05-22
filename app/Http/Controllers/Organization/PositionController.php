@@ -17,7 +17,7 @@ class PositionController extends Controller
     {
         return view('position.index',[
             "title" => "Table Position",
-            "results" => Position::paginate(10),
+            "results" => Position::latest()->paginate(10),
         ]);
     }
 
