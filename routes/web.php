@@ -7,6 +7,7 @@ use App\Http\Controllers\Organization\DivisionController;
 use App\Http\Controllers\Organization\OfficeController;
 use App\Http\Controllers\Organization\PositionController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RealizationController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\WorkplanController;
 use Illuminate\Support\Facades\Route;
@@ -50,4 +51,5 @@ Route::middleware('auth')->group(function() {
     Route::resource('client', ClientController::class);
     Route::resource('ticket', TicketController::class);
     Route::resource('workplan', WorkplanController::class);
+    Route::resource('realization', RealizationController::class);
 });

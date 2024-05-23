@@ -33,6 +33,9 @@ class Workplan extends Model
     public function user() {
         return $this->belongsTo(User::class,'technician_id');
     }
+    public function realizations() {
+        return $this->hasMany(Realization::class,'workplan_id');
+    }
 
     public function handleStoreOrUpdate($request)
     {
@@ -44,6 +47,12 @@ class Workplan extends Model
                 $this->finished = $request->date ." ". $request->finished . ":00";
                 $this->status = "Completed";    
                 $this->save();
+
+                $realization = Realization::firstOrNew([
+                    'workplan_id' => $this->id
+                ]);
+                $realization->status = "New";
+                $realization->save();
             } else {
                 $this->status = "Draft";    
                 $this->started = $request->date ." ". $request->started . ":00";

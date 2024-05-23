@@ -59,6 +59,12 @@
             </div>
 
             <!-- Nav Item -->
+            <li class="nav-item {{ Nav::isRoute('client.index') }}">
+                <a class="nav-link" href="{{ route('client.index') }}">
+                    <i class="fas fa-fw fa-desktop"></i>
+                    <span>{{ __('Monitor Ticket') }}</span>
+                </a>
+            </li>
             <li class="nav-item {{ Nav::isRoute('ticket.index') }}">
                 <a class="nav-link" href="{{ route('ticket.index') }}">
                     <i class="fas fa-fw fa-calendar-check"></i>
@@ -85,9 +91,9 @@
                     <span>{{ __('Workplan') }}</span>
                 </a>
             </li>
-            <li class="nav-item {{ Nav::isRoute('product.index') }}">
-                <a class="nav-link" href="{{ route('product.index') }}">
-                    <i class="fas fa-fw fa-star"></i>
+            <li class="nav-item {{ Nav::isRoute('realization.index') }}">
+                <a class="nav-link" href="{{ route('realization.index') }}">
+                    <i class="fas fa-fw fa-check"></i>
                     <span>{{ __('Realization') }}</span>
                 </a>
             </li>
