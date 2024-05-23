@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Master\OfficeRequest;
 use App\Http\Requests\Master\SoRequest;
 use App\Models\Models\Organization\StrukturOrganization;
 use Illuminate\Http\Request;
@@ -57,7 +58,7 @@ class OfficeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(SoRequest $request, StrukturOrganization $office)
+    public function update(OfficeRequest $request, StrukturOrganization $office)
     {
         return $office->handleStoreOrUpdate($request);
     }

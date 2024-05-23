@@ -38,7 +38,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="address">Email</label>
+                    <label for="address">Address</label>
                     <textarea name="address" id="address" class="form-control" cols="30" rows="10">{{ old('name') ?? $office->address }}
                     </textarea>
                     @error('address')

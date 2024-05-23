@@ -73,6 +73,7 @@ class DirectorController extends Controller
      */
     public function destroy(StrukturOrganization $director)
     {
+        dd($director->parent());
         return $director->handleDestroy();
     }
 }

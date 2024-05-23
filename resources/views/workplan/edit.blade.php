@@ -102,7 +102,7 @@
                 <div class="form-group">
                   <label for="name">Date</label>
                   <input type="date" name="date" class="form-control @error('date') is-invalid @enderror" id="date"
-                      value="{{ $workplan->started->format('d/m/Y') }}">
+                      value="">
                   @error('date')
                       <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -112,7 +112,7 @@
                 <div class="form-group">
                   <label for="started">Time Start</label>
                   <input type="time" name="started" class="form-control @error('started') is-invalid @enderror" id="name"
-                      value="{{ Auth::user()->printer->code ?? ' - ' }}">
+                      value="">
                   @error('started')
                       <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -122,7 +122,7 @@
                 <div class="form-group">
                   <label for="finished">Time End</label>
                   <input type="time" name="finished" class="form-control @error('finished') is-invalid @enderror" id="finished"
-                     value="{{ Auth::user()->printer->code ?? ' - ' }}">
+                     value="">
                   @error('finished')
                       <span class="text-danger">{{ $message }}</span>
                   @enderror

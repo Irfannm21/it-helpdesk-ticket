@@ -42,14 +42,8 @@ class Workplan extends Model
             if($request->action == "submit") {
                 $this->started = $request->date ." ". $request->started . ":00";
                 $this->finished = $request->date ." ". $request->finished . ":00";
+                $this->status = "Completed";    
                 $this->save();
-                $workplan = Workplan::firstOrNew(
-                    [
-                        "ticket_id" => $this->id,
-                        "status" => "New",
-                    ]
-                );
-                $workplan->save();
             } else {
                 $this->status = "Draft";    
                 $this->started = $request->date ." ". $request->started . ":00";

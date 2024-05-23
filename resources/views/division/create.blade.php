@@ -34,7 +34,7 @@
                   <select name="parent_id" id="" class="form-control">
                     <option value="" selected>-- Select --</option>
                     @foreach ($parents as $item)
-                        <option value="{{$item->id}}">{{$item->name}}</option>
+                        <option value="{{$item->id}}"{{$item->id == old('parent_id') ? "selected" : '' }}>{{$item->name}}</option>
                     @endforeach
                   </select>
                   @error('name')

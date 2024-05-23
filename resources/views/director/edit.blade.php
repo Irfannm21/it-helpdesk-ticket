@@ -37,7 +37,7 @@
                  <select name="parent_id" id="parent_id" class="form-control @error('parent_id') is-invalid @enderror" >
                   <option value="" selected>-- Select --</option>
                   @foreach ($parents as $item)
-                      <option value="{{$item->id}}" {{$item->id == $director->parent_id ? 'selected' : ''}}>{{$item->name}}</option>
+                      <option value="{{$item->id}}" {{$item->id == (old('parent_id') ?? $director->parent_id) ? 'selected' : ''}}>{{$item->name}}</option>
                   @endforeach
                 </select>
                   @error('name')
