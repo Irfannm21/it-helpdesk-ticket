@@ -17,6 +17,7 @@ class DirectorController extends Controller
         return view('director.index',[
             "title" => "Table Director",
             "results" => StrukturOrganization::where('type',"director")->get(),
+            'parents' => StrukturOrganization::WhereIn('type',['director','base'])->get(),
         ]);
     }
 
@@ -36,6 +37,7 @@ class DirectorController extends Controller
      */
     public function store(SoRequest $request)
     {
+        // dd($request->all());
         $record = new StrukturOrganization;
         return $record->handleStoreOrUpdate($request);
     }
@@ -72,8 +74,7 @@ class DirectorController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(StrukturOrganization $director)
-    {
-        dd($director->parent());
+    {   
         return $director->handleDestroy();
     }
 }

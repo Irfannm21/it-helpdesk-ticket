@@ -69,7 +69,6 @@ class StrukturOrganization extends Model
 
     public function handleDestroy()
     {
-    
         $this->beginTransaction();
         try {
             $this->delete();

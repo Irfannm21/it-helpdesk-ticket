@@ -37,7 +37,7 @@
                     <td>
                         {!! $result->getDescriptionRaw($result->ticket->description) !!}
                     </td>
-                    <td>{{ $result->description ?? '' }}</td>
+                    <td>{{ $result->user->name ?? '' }}</td>
                     <td>{{ $result->status }}</td>
                     <td>
                         <div class="d-flex">

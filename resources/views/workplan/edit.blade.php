@@ -101,8 +101,9 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="name">Date</label>
-                  <input type="date" name="date" class="form-control @error('date') is-invalid @enderror" id="date"
-                      value="">
+                  <input type="date" name="date" class="form-control @error('date') is-invalid @enderror" id="date" @isset($workplan->started)
+                  value="{{$workplan->started->format('Y-m-d')}}"
+              @endisset>
                   @error('date')
                       <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -111,8 +112,9 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="started">Time Start</label>
-                  <input type="time" name="started" class="form-control @error('started') is-invalid @enderror" id="name"
-                      value="">
+                  <input type="time" name="started" class="form-control @error('started') is-invalid @enderror" id="name" @isset($workplan->started)
+                  value="{{$workplan->started->format('H:i')}}"
+              @endisset>
                   @error('started')
                       <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -121,25 +123,21 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="finished">Time End</label>
-                  <input type="time" name="finished" class="form-control @error('finished') is-invalid @enderror" id="finished"
-                     value="">
+                  <input type="time" name="finished" class="form-control @error('finished') is-invalid @enderror" id="finished" @isset($workplan->finished)
+                      value="{{$workplan->finished->format('H:i')}}"
+                  @endisset>
                   @error('finished')
                       <span class="text-danger">{{ $message }}</span>
                   @enderror
               </div>
               </div>
             </div>
-     
-
+    
             <div class="form-group">
                 <label for="description">Note</label>
-                <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
+                <textarea name="description" id="description" class="form-control" cols="30" rows="10">{{$workplan->description ?? ''}}</textarea>
                 @error('description')
-                    <span class="text-danger">
-                    @empty($workplan)
-
-                    @endempty
-                    </span>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 

@@ -50,8 +50,6 @@ class Workplan extends Model
                 $this->finished = $request->date ." ". $request->finished . ":00";
                 $this->save();
             }
-            // dd($this->action);
-            // return $this->commitSaved();
             $this->commitSaved();
             if(request()->route()->getName() == 'workplan.store') {
                 return redirect()->route('workplan.index')->with('message', 'Workplan added successfully!');
