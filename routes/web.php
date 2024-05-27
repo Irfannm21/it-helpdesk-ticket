@@ -51,5 +51,10 @@ Route::middleware('auth')->group(function() {
     Route::resource('client', ClientController::class);
     Route::resource('ticket', TicketController::class);
     Route::resource('workplan', WorkplanController::class);
-    Route::resource('realization', RealizationController::class);
+    // Route::resource('realization', RealizationController::class);
+    Route::get('realization', 'RealizationController@index')->name('realization.index');
+    Route::get('realization/{realization}/detail', 'RealizationController@detail')->name('realization.detail');
+    Route::get('realization/{realization}/create', 'RealizationController@create')->name('realization.create');
+    Route::post('realization/store', 'RealizationController@store')->name('realization.store');
+    Route::get('realization/edit', 'RealizationController@edit')->name('realization.edit');
 });

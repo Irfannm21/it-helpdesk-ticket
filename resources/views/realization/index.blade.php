@@ -45,10 +45,10 @@
                     <td>
                         <div class="d-flex">
                             @if ($result->status == "New")
-                            <a href="{{ route('realization.edit',$result->id) }}" class="btn btn-sm btn-success mr-2">Fix</a>
+                            <a href="{{ route('realization.detail',$result->id) }}" class="btn btn-sm btn-success mr-2">Fix</a>
                             
                             @elseif($result->status == "Draft") 
-                            <a href="{{ route('realization.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
+                            {{-- <a href="{{ route('realization.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a> --}}
                             {{-- <form action="{{ route('workplan.destroy', $result->id) }}" method="post">
                                 @csrf
                                 @method('delete')

@@ -7,6 +7,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <form action="{{ route('realization.store') }}" method="post">
+                        @csrf
+                        <input hidden type="text" name="workplan_id" class="form-control" value="{{$realization->workplan->id}}">
                     <div class="card-title">
                         <h1 class="h3 mb-4 text-gray-800">{{ $title ?? __('Blank Page') }}</h1>
                     </div>
@@ -16,9 +19,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">Workplan ID</label>
-                                        <input type="text" name="workplan_id" class="form-control @error('name') is-invalid @enderror"
-                                            id="name" placeholder="Name Product" autocomplete="off" value="{}">
+                                        <label for="name">Client ID</label>
+                                        <input disabled type="text" name="workplan_id" class="form-control @error('name') is-invalid @enderror"
+                                            id="name" autocomplete="off" value="{{$realization->workplan->ticket->client->code}}">
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -26,9 +29,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">HArdware Client</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            id="name" placeholder="Name Product" autocomplete="off">
+                                        <label for="name">Hardware Client</label>
+                                        <select name="product_id" id="product_id" class="form-control">
+                                            <option value="">-- Pilih Satu --</option>
+                                            <option value="{{$realization->workplan->ticket->client->pc_id}}">{{$realization->workplan->ticket->client->pc->code}}</option>
+                                            <option value="{{$realization->workplan->ticket->client->printer_id}}">{{$realization->workplan->ticket->client->printer->code}}</option>
+                                            <option value="{{$realization->workplan->ticket->client->network_id}}">{{$realization->workplan->ticket->client->network->code}}</option>
+                                        </select>
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -80,6 +87,9 @@
                                 </div>
                             </div>
                         </div>
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="{{ route('realization.index') }}" class="btn btn-default">Back to list</a>
                     </div>
                 </div>
             </div>

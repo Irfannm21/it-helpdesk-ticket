@@ -158,7 +158,7 @@
                 <h1 class="h3 mt-4 text-gray-800">{{ $title_3 ?? __('Blank Page') }}</h1>
             </div>
             <hr>
-              <a href="{{ route('realization.create') }}" class="btn btn-primary mb-3">Add Realization</a>
+              <a href="{{ route('realization.create',$realization->id) }}" class="btn btn-primary mb-3">Add Realization</a>
             <table class="table table-bordered table-stripped">
         <thead>
             <tr>
@@ -190,15 +190,15 @@
                     <td>
                         <div class="d-flex">
                             @if ($result->status == "New")
-                            <a href="{{ route('realization.edit',$result->id) }}" class="btn btn-sm btn-success mr-2">Fix</a>
+                            {{-- <a href="{{ route('realization.edit',$result->id) }}" class="btn btn-sm btn-success mr-2">Fix</a> --}}
                             
                             @elseif($result->status == "Draft") 
-                            <a href="{{ route('realization.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
-                            <form action="{{ route('realization.destroy', $result->id) }}" method="post">
+                            {{-- <a href="{{ route('realization.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a> --}}
+                            {{-- <form action="{{ route('realization.destroy', $result->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this?')">Delete</button>
-                            </form>
+                            </form> --}}
                             @endif
                         </div>
                     </td>

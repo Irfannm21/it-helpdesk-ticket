@@ -92,7 +92,7 @@
                 </a>
             </li>
             <li class="nav-item {{ Nav::isRoute('realization.index') }}">
-                <a class="nav-link" href="{{ route('realization.index') }}">
+                <a class="nav-link" href="{{ route('realization.index') }}">    
                     <i class="fas fa-fw fa-check"></i>
                     <span>{{ __('Realization') }}</span>
                 </a>
