@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Realization;
+use App\Models\RealizationDetail;
+use App\User;
 use Illuminate\Http\Request;
 
 class RealizationController extends Controller
@@ -24,14 +26,14 @@ class RealizationController extends Controller
             'title_2' => "Instruction Info",
             "title_3" => "Realization",
             'realization' => $realization, 
-            "results" => Realization::where('workplan_id', $realization->workplan_id)->whereNotNull('product_id')->get(),
+            "results" => RealizationDetail::where('realization_id', $realization->id)->paginate(10),
         ]);
     }
 
 
     public function create(Realization $realization)
     {
-        return view('realization.create',
+        return view('realization.detail.create',
         [
             'title' => "Add Realization",
             'realization'=> $realization
@@ -40,7 +42,8 @@ class RealizationController extends Controller
 
     public function store(Request $request)
     {
-        return $this->handleStoreOrUpdate($request->all());
+        $record = new RealizationDetail;
+        return $record->handleStoreOrUpdate($request);
     }
 
     public function show(string $id)
@@ -50,23 +53,28 @@ class RealizationController extends Controller
 
     public function edit(Realization $realization)
     {
-        return view('realization.detail',[
+        return view('realization.edit',[
             'title' => "Ticket Info",
             'title_2' => "Instruction Info",
             "title_3" => "Realization",
+            "results" =>    User::get(),
             'realization' => $realization, 
-            "results" => Realization::where('workplan_id', $realization->workplan_id)->whereNotNull('product_id')->get(),
         ]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Realization $realization)
     {
-        //
+        return $realization->handleStoreOrUpdate($request);
     }
 
     public function destroy(string $id)
     {
         //
+    }
+
+    public function detailEdit(RealizationDetail $realizationDetail)
+    {
+        dd($realizationDetail);
     }
 
 }

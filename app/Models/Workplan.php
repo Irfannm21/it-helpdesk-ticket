@@ -48,8 +48,14 @@ class Workplan extends Model
                 $this->status = "Completed";    
                 $this->save();
 
+                $date  = $this->started->format('Y-m-d');
+                
                 $realization = Realization::firstOrNew([
-                    'workplan_id' => $this->id
+                    'workplan_id' => $this->id,
+                    'technician_id' => $this->technician_id,
+                    'date' => $date,
+                    'started' => $this->started,
+                    'finished' => $this->finished,
                 ]);
                 $realization->status = "New";
                 $realization->save();

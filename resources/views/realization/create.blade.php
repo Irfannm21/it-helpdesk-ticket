@@ -80,9 +80,9 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="description">Problem Description</label>
-                                    <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
+                                    <textarea name="problem_description" id="description" class="form-control" cols="30" rows="10"></textarea>
                                     @error('description')
-                                        <span class="text-danger">{{ old('problem_description') }}</span>
+                                        <span class="text-danger">{{ old('description') }}</span>
                                     @enderror
                                 </div>
                             </div>

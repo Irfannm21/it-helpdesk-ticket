@@ -36,7 +36,7 @@
                     <td>
                         {!! $result->workplan->getDescriptionRaw($result->workplan->ticket->description) !!}
                     </td>
-                    <td>{{ $result->workplan->user->name ?? '' }} <br> {{ $result->workplan->started->format('d M Y') ?? '' }}  ( {{ $result->workplan->started->format('H:i') ?? '' }} - {{ $result->workplan->finished->format('H:i') ?? '' }} ) </td>
+                    <td>{{ $result->user->name ?? '' }} <br> {{ $result->date->format('d M Y') ?? '' }}  ( {{ $result->started->format('H:i') ?? '' }} - {{ $result->finished->format('H:i') ?? '' }} ) </td>
                     <td>
                         {!! $result->workplan->getDescriptionRaw($result->workplan->description) !!}
                     </td>
@@ -45,7 +45,8 @@
                     <td>
                         <div class="d-flex">
                             @if ($result->status == "New")
-                            <a href="{{ route('realization.detail',$result->id) }}" class="btn btn-sm btn-success mr-2">Fix</a>
+                            <a href="{{ route('realization.edit',$result->id) }}" class="btn btn-sm btn-success mr-2">Reschdule</a>
+                            <a href="{{ route('realization.detail',$result->id) }}" class="btn btn-sm btn-success mr-2">Detail</a>
                             
                             @elseif($result->status == "Draft") 
                             {{-- <a href="{{ route('realization.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a> --}}
