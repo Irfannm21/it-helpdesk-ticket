@@ -34,7 +34,7 @@ class Workplan extends Model
         return $this->belongsTo(User::class,'technician_id');
     }
     public function realizations() {
-        return $this->hasMany(Realization::class,'workplan_id');
+        return $this->hasOne(Realization::class,'workplan_id');
     }
 
     public function handleStoreOrUpdate($request)

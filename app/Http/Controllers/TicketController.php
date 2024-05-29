@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -70,5 +71,13 @@ class TicketController extends Controller
     public function destroy(Ticket $ticket)
     {
         return $ticket->handleDestroy();
+    }
+
+    public function monitor()
+    {
+        return view('ticket.monitor',[
+            'title' => "Monitoring Ticket",
+            'results' => Ticket::where('client_id',Auth::user()->id)->paginate(10),
+        ]);
     }
 }

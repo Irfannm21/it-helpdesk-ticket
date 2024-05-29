@@ -8,6 +8,7 @@ use App\Http\Controllers\Organization\OfficeController;
 use App\Http\Controllers\Organization\PositionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RealizationController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\WorkplanController;
 use Illuminate\Support\Facades\Route;
@@ -49,9 +50,9 @@ Route::middleware('auth')->group(function() {
     Route::resource('division', DivisionController::class);
     Route::resource('position', PositionController::class);
     Route::resource('client', ClientController::class);
+    Route::get('/ticket/monitor','TicketController@monitor')->name('ticket.monitor');
     Route::resource('ticket', TicketController::class);
     Route::resource('workplan', WorkplanController::class);
-    // Route::resource('realization', RealizationController::class);
         Route::get('realization/{realization}/create', 'RealizationController@create')->name('realization.create');
     Route::get('realization', 'RealizationController@index')->name('realization.index');
     Route::post('realization/store', 'RealizationController@store')->name('realization.store');
@@ -62,4 +63,5 @@ Route::middleware('auth')->group(function() {
     Route::get('realization/{realizationDetail}/detailEdit', 'RealizationController@detailEdit')->name('realization.detailEdit');
     Route::put('realization/{realizationDetail}/detailUpdate', 'RealizationController@detailUpdate')->name('realization.detailUpdate');
     Route::delete('realization/{realizationDetail}/detailDelete', 'RealizationController@detailDelete')->name('realization.detailDelete');
+    Route::resource('review', ReviewController::class);
 });

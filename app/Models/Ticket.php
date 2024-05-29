@@ -81,4 +81,9 @@ class Ticket extends Model
         }
     }
 
+    public function checkStatus()
+    {
+        
+    }
+
 }

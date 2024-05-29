@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('realization_id');
             $table->unsignedBigInteger('user_id');
             $table->date('date')->nullable();
+            $table->enum('status',['New','Draft','Completed']);
             $table->string('description')->nullable();
             $table->timestamps();
 

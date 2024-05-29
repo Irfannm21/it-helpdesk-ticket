@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Models\Model;
+use App\Models\Realization;
+use App\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
@@ -17,23 +19,35 @@ class Review extends Model
         'description'
     ];
 
-    public function user() {
+    protected $casts = 
+    [
+        "date" => 'date'
+    ];
+
+    public function client() {
         return $this->belongsTo(User::class,'technician_id');
+    }
+
+    public function realization() {
+        return $this->belongsTo(Realization::class,'realization_id');
     }
 
     public function handleStoreOrUpdate($request)
     {
         $this->beginTransaction();
         try {
-            $this->fill($request->all());
-            $this->save();
+            if($request->action == "submit") {
+                $this->fill($request->all());
+                $this->status = "Completed";
+                $this->save();
+            } else {
+                $this->fill($request->all());
+                $this->status = "Draft";
+                $this->save();
+            }
           
             $this->commitSaved();
-              if(request()->route()->getName() == 'realization.store') {
-                return redirect()->route('realization.index',$this->id)->with('message', 'Realization added successfully!');
-            } else {
-                return redirect()->route('realization.index',$this->id)->with('message', 'Realization Upddated successfully!');
-            }
+                return redirect()->route('review.index',$this->id)->with('message', 'Feedback Upddated successfully!');
         } catch (\Exception $e) {
             return $this->rollbackSaved($e);
         }

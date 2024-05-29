@@ -59,8 +59,8 @@
             </div>
 
             <!-- Nav Item -->
-            <li class="nav-item {{ Nav::isRoute('client.index') }}">
-                <a class="nav-link" href="{{ route('client.index') }}">
+            <li class="nav-item {{ Nav::isRoute('ticket.monitor') }}">
+                <a class="nav-link" href="{{ route('ticket.monitor') }}">
                     <i class="fas fa-fw fa-desktop"></i>
                     <span>{{ __('Monitor Ticket') }}</span>
                 </a>
@@ -71,10 +71,10 @@
                     <span>{{ __('Ticket') }}</span>
                 </a>
             </li>
-            <li class="nav-item {{ Nav::isRoute('product.index') }}">
-                <a class="nav-link" href="{{ route('product.index') }}">
+            <li class="nav-item {{ Nav::isRoute('review.index') }}">
+                <a class="nav-link" href="{{ route('review.index') }}">
                     <i class="fas fa-fw fa-star"></i>
-                    <span>{{ __('Review') }}</span>
+                    <span>{{ __('Feedback') }}</span>
                 </a>
             </li>
 

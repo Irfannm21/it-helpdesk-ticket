@@ -32,7 +32,10 @@ class Realization extends Model
         return $this->belongsTo(Workplan::class, 'workplan_id');
     }
 
-   
+    public function details()
+    {
+        return $this->hasMany(RealizationDetail::class, 'realization_id');
+    }
 
     public function user() {
         return $this->belongsTo(User::class,'technician_id');
@@ -72,7 +75,10 @@ class Realization extends Model
             $this->save();
             $review = Review::firstOrNew([
                 'realization_id' => $this->id,
-            ])
+                'user_id'   => $this->workplan->ticket->client_id,
+                'status' => "New",
+            ]);
+            $review->save();
             $this->commitSaved();
               if(request()->route()->getName() == 'realization.store') {
                 return redirect()->route('realization.index',$this->id)->with('message', 'Realization added successfully!');
