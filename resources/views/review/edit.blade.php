@@ -36,7 +36,7 @@
                 @method('put')
                 <div class="form-group">
                   <label for="description">Feedback Date</label>
-                 <input type="date" class="form-control" name="date" value="{{$review->date->format('Y-m-d')}}">
+                 <input type="date" class="form-control" name="date" value="{{$review->date ? $review->date->format('Y-m-d') : ''}}">
                   @error('description')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror

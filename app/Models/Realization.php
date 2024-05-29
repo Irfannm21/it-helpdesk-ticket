@@ -41,6 +41,11 @@ class Realization extends Model
         return $this->belongsTo(User::class,'technician_id');
     }
 
+    public function review()
+    {
+        return $this->hasOne(Review::class, 'realization_id');
+    }
+
     public function handleStoreOrUpdate($request)
     {
         $this->beginTransaction();

@@ -16,7 +16,7 @@
             <tr>
                 <th>No</th>
                 <th>Ticket Info</th>
-                <th>Erro Datetime</th>
+                <th>Issue Datetime</th>
                 <th>Technician Name</th>
                 <th>Repair Date</th>
                 <th>Status</th>
@@ -28,9 +28,14 @@
                     <td scope="row">{{ $loop->iteration }}</td>
                     <td>{!! $result->client->name . "<br>" . $result->code !!}</td>
                     <td>{{ $result->datetime->format('d-m-Y')}} <br> {{$result->datetime->format('H : i') }}</td>
-                    <td>{!! $result->workplan->realizations->user->name . "<br> (" . $result->workplan->realizations->user->position->name . ")"  !!}</td>
+                    @if ($result->workplan->realizations)
+                    <td>{!! $result->workplan->realizations->user->name ?? '' . "<br> (" . $result->workplan->realizations->user->position->name ?? '' . ")"  !!}</td>
                     <td>{{ $result->workplan->realizations->date->format('d-m-Y') ?? '' }}</td>
-                    <td>{{ $result->status }}</td>
+                    @else 
+                    <td></td>
+                    <td></td>
+                    @endif
+                    <td>{{ $result->checkStatus($result->id) }}</td>
                 </tr>
             @endforeach
         </tbody>

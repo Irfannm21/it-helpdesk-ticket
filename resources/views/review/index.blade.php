@@ -32,7 +32,7 @@
                     <td>{{ $result->realization->workplan->ticket->code ?? '' }}</td>
                     <td></td>
                     <td>{{ $result->realization->user->name ?? '' }}</td>
-                    <td>{{ $result->date->format('d-m-Y') ?? '' }}</td>
+                    <td>{{$result->date ? $result->date->format('d-m-Y') : ''}}</td>
                     <td>{!! $result->getDescriptionRaw($result->description) !!}</td>
                     <td>{{ $result->status }}</td>
                     <td>

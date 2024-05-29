@@ -81,9 +81,17 @@ class Ticket extends Model
         }
     }
 
-    public function checkStatus()
+    public function checkStatus($request)
     {
-        
+        $result = Ticket::findOrFail($request);
+
+        if(!empty($result->workplan->realizations->review)) {
+            return "Completed";
+        } elseif (!empty($result->workplan->realizations)) {
+            return "On Repair";
+        } else {
+            return "Waiting";
+        }
     }
 
 }
