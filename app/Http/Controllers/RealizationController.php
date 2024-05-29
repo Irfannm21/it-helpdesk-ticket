@@ -67,6 +67,11 @@ class RealizationController extends Controller
         return $realization->handleStoreOrUpdate($request);
     }
 
+    public function submit(Realization $realization)
+    {
+        return $realization->handleSubmit();
+    }
+
     public function destroy(string $id)
     {
         //
@@ -74,7 +79,22 @@ class RealizationController extends Controller
 
     public function detailEdit(RealizationDetail $realizationDetail)
     {
-        dd($realizationDetail);
+        
+        return view('realization.detail.edit',
+        [
+            'title' => "Edit Realization",
+            'realizationDetail'=> $realizationDetail
+        ]);
+    }
+
+    public function detailUpdate(Request $request, RealizationDetail $realizationDetail)
+    {
+        return $realizationDetail->handleStoreOrUpdate($request);
+    }
+
+    public function detailDelete(RealizationDetail $realizationDetail)
+    {
+        return $realizationDetail->handleDestroy();
     }
 
 }

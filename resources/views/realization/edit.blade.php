@@ -131,7 +131,7 @@
               </div>
             </div>
 
-            <button type="submit" name="action" value="submit" class="btn btn-primary">Save</button>
+            <button type="submit" name="action" class="btn btn-primary">Save</button>
             <button type="submit" name="action" value="draft" class="btn btn-warning">Draft</button>
             <a href="{{ route('ticket.index') }}" class="btn btn-default">Back to list</a>
 

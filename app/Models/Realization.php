@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Model;
+use App\Models\Review;
 use App\Models\Workplan;
 use App\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,9 +43,15 @@ class Realization extends Model
         $this->beginTransaction();
         try {
             $this->fill($request->all());
+            if($request->action == "submit") {
+                $this->status = "completed";
+                $this->save();
+            } else {
                 $this->started = $request->date ." ". $request->started . ":00";
                 $this->finished = $request->date ." ". $request->finished . ":00";
+                $this->status = "draft";
                 $this->save();
+            }
             $this->commitSaved();
               if(request()->route()->getName() == 'realization.store') {
                 return redirect()->route('realization.index',$this->id)->with('message', 'Realization added successfully!');
@@ -57,25 +64,28 @@ class Realization extends Model
 
     }
 
-    // public function handleStoreOrUpdate($request)
-    // {
-    //     // dd($request->all());
-    //     $this->beginTransaction();
-    //     try {
-    //         $this->fill($request->all());
-    //         $this->save();
+    public function handleSubmit()
+    {
+        $this->beginTransaction();
+        try {
+            $this->status = "completed";
+            $this->save();
+            $review = Review::firstOrNew([
+                'realization_id' => $this->id,
+            ])
+            $this->commitSaved();
+              if(request()->route()->getName() == 'realization.store') {
+                return redirect()->route('realization.index',$this->id)->with('message', 'Realization added successfully!');
+            } else {
+                return redirect()->route('realization.index',$this->id)->with('message', 'Realization Upddated successfully!');
+            }
+        } catch (\Exception $e) {
+            return $this->rollbackSaved($e);
+        }
 
-    //         // return $this->commitSaved();
-    //         $this->commitSaved();
-    //         if(request()->route()->getName() == 'realization.store') {
-    //             return redirect()->route('realization.detail',$this->id)->with('message', 'Product added successfully!');
-    //         } else {
-    //             return redirect()->route('realization.detail',$this->id)->with('message', 'Product Upddated successfully!');
-    //         }
-    //     } catch (\Exception $e) {
-    //         return $this->rollbackSaved($e);
-    //     }
-    // }
+    }
+
+
 
     public function handleDestroy()
     {

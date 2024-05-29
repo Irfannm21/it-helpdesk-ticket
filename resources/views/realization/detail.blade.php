@@ -173,20 +173,20 @@
             @foreach ($results as $result)
                 <tr>
                     <td scope="row">{{ $loop->iteration }}</td>
-                    <td>{{ $result->product->code }}</td>
-                    <td> {{ $result->realization->date->format('d-M-Y')  }}<br> {{" (" . $result->started->format("H:i") . " - " . $result->finished->format("H:i") . ")" }}</td>
+                    <td>{{ $result->product->code ?? '' }}</td>
+                    <td> {{ $result->realization->date->format('d-M-Y') ?? '' }}<br> {{" (" . $result->started->format("H:i")  . " - " . $result->finished->format("H:i") . ")" }}</td>
                     {{-- <td>
                         {!! $result->workplan->getDescriptionRaw($result->workplan->ticket->description) !!}
                     </td> --}}
                     {{-- <td>{{ $result->workplan->user->name ?? '' }} <br> {{ $result->workplan->started->format('d M Y') ?? '' }}  ( {{ $result->workplan->started->format('H:i') ?? '' }} - {{ $result->workplan->finished->format('H:i') ?? '' }} ) </td> --}}
                     <td>
-                        {!! $result->getDescriptionRaw($result->description) !!}
+                        {!! $result->getDescriptionRaw($result->description)  !!}
                     </td> 
                     {{-- <td>{{ $result->workplan->ticket->datetime->format('d-m-Y')}} <br> {{$result->workplan->ticket->datetime->format('H : i') }}</td> --}}
                     <td>
                         <div class="d-flex">
                             <a href="{{ route('realization.detailEdit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
-                            <form action="{{ route('realization.edit', $result->id) }}" method="post">
+                            <form action="{{ route('realization.detailDelete', $result->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this?')">Delete</button>
@@ -197,8 +197,11 @@
             @endforeach
         </tbody>
     </table>
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a href="{{ route('realization.index') }}" class="btn btn-default">Back to list</a>
+    <form action="{{ route('realization.submit',$realization->id) }}" method="post">
+        @csrf
+        <button type="submit" class="btn btn-success" value="submit">Save Realization</button>
+        <a href="{{ route('realization.index') }}" class="btn btn-default">Back to list</a>
+    </form>
            
         </div>
     </div>

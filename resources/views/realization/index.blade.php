@@ -44,7 +44,7 @@
                     <td>{{ $result->status }}</td>
                     <td>
                         <div class="d-flex">
-                            @if ($result->status == "New")
+                            @if ($result->status == "New" || "Draft") 
                             <a href="{{ route('realization.edit',$result->id) }}" class="btn btn-sm btn-success mr-2">Reschdule</a>
                             <a href="{{ route('realization.detail',$result->id) }}" class="btn btn-sm btn-success mr-2">Detail</a>
                             

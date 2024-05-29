@@ -57,7 +57,7 @@ class RealizationDetail extends Model
         try {
             $this->delete();
             $this->commitDeleted();
-            return redirect()->route('realization.index')->with('message', 'Delete Product successfully!');
+            return redirect()->route('realization.detail',$this->realization->id)->with('message', 'Delete Product successfully!');
         } catch (\Exception $e) {
             return $this->rollbackDeleted($e);
         }

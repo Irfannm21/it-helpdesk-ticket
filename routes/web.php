@@ -58,5 +58,8 @@ Route::middleware('auth')->group(function() {
     Route::get('realization/{realization}/edit', 'RealizationController@edit')->name('realization.edit');
     Route::put('realization/{realization}/update', 'RealizationController@update')->name('realization.update');
     Route::get('realization/{realization}/detail', 'RealizationController@detail')->name('realization.detail');
+    Route::post('realization/{realization}/submit', 'RealizationController@submit')->name('realization.submit');
     Route::get('realization/{realizationDetail}/detailEdit', 'RealizationController@detailEdit')->name('realization.detailEdit');
+    Route::put('realization/{realizationDetail}/detailUpdate', 'RealizationController@detailUpdate')->name('realization.detailUpdate');
+    Route::delete('realization/{realizationDetail}/detailDelete', 'RealizationController@detailDelete')->name('realization.detailDelete');
 });
