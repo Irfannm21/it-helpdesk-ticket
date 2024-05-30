@@ -43,7 +43,10 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-      
+        return view('ticket.show',[
+            'title' => "Show Ticket",
+            'ticket' => $ticket
+        ]);
     }
 
     /**

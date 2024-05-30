@@ -35,12 +35,20 @@ class Model extends Base
         return $str;
     }
 
-    public function getStatus ($value) {
+    public function checkLabel ($value) {
         switch ($value) {
-            case 'New':
-                
+            case 'Completed':
+               return  " <h6><b class='badge rounded-pillbadge bg-success text-dark p-2'>" . $value ."</b></h6>";
                 break;
-            
+            case 'Draft':
+                return  " <h6><b class='badge rounded-pillbadge bg-warning text-dark p-2'>" . $value ."</b></h6>";
+                    break;
+            case "On Repair":
+                return  " <h6><b class='badge rounded-pillbadge bg-primary text-dark p-2'>" . $value ."</b></h6>";
+                    break;
+            case "Waiting":
+                return  " <h6><b class='badge rounded-pillbadge bg-warning text-dark p-2'>" . $value ."</b></h6>";
+                    break;
             default:
                 # code...
                 break;

@@ -8,9 +8,6 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('workplan.update', $workplan->id) }}" method="post">
-                @csrf
-                @method('put')
 
                 <div class="row">
                     <div class="col-md-6">
@@ -87,7 +84,7 @@
 
             <div class="form-group">
                 <label for="name">Select Technician</label>
-                <select name="technician_id" id="technician_id" class="form-control">
+                <select disabled name="technician_id" id="technician_id" class="form-control">
                     <option value="" selected>-- Select --</option>
                     @foreach ($results as $item)
                         <option value="{{ $item->id }}" {{$item->id == $workplan->technician_id ? 'selected' : ''}}>{{ $item->name }}</option>
@@ -101,7 +98,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="name">Date</label>
-                  <input type="date" name="date" class="form-control @error('date') is-invalid @enderror" id="date" @isset($workplan->started)
+                  <input disabled type="date" name="date" class="form-control @error('date') is-invalid @enderror" id="date" @isset($workplan->started)
                   value="{{$workplan->started->format('Y-m-d')}}"
               @endisset>
                   @error('date')
@@ -112,7 +109,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="started">Time Start</label>
-                  <input type="time" name="started" class="form-control @error('started') is-invalid @enderror" id="name" @isset($workplan->started)
+                  <input disabled type="time" name="started" class="form-control @error('started') is-invalid @enderror" id="name" @isset($workplan->started)
                   value="{{$workplan->started->format('H:i')}}"
               @endisset>
                   @error('started')
@@ -123,7 +120,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="finished">Time End</label>
-                  <input type="time" name="finished" class="form-control @error('finished') is-invalid @enderror" id="finished" @isset($workplan->finished)
+                  <input disabled type="time" name="finished" class="form-control @error('finished') is-invalid @enderror" id="finished" @isset($workplan->finished)
                       value="{{$workplan->finished->format('H:i')}}"
                   @endisset>
                   @error('finished')
@@ -135,14 +132,12 @@
     
             <div class="form-group">
                 <label for="description">Note</label>
-                <textarea name="description" id="description" class="form-control" cols="30" rows="10">{{$workplan->description ?? ''}}</textarea>
+                <textarea disabled name="description" id="description" class="form-control" cols="30" rows="10">{{$workplan->description ?? ''}}</textarea>
                 @error('description')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
-            <button type="submit" name="action" value="submit" class="btn btn-primary">Save</button>
-            <button type="submit" name="action" value="draft" class="btn btn-warning">Draft</button>
             <a href="{{ route('workplan.index') }}" class="btn btn-default">Back to list</a>
 
             </form>

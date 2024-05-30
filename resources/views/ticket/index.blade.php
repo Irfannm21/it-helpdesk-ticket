@@ -36,18 +36,48 @@
                     <td>{{ $result->client->name }} ({{ $result->client->position->name }})</td>
                     <td>{{ $result->client->code ?? '' }}</td>
                     <td>{{ $result->description }}</td>
-                    <td>{{ $result->status }}</td>
+                    <td>{!! $result->checkLabel($result->status) !!}</td>
                     <td>
-                        <div class="d-flex">
-                            @if ($result->status == "Draft")
-                            <a href="{{ route('ticket.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
-                            <form action="{{ route('ticket.destroy', $result->id) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this?')">Delete</button>
-                            </form>
+                        <div class="btn-group">
+                        <button class="dropdown-toggle btn-primary" href="#" data-toggle="collapse" data-target="#collapseTwo{{$result->id}}"
+                        aria-expanded="false" aria-controls="collapseTwo{{$result->id}}">
+                           <span>{{ __('Action') }}</span></button>
+                        </button>
+                    </div>
+                        <div id="collapseTwo{{$result->id}}" class="collapse" aria-labelledby="headingTwo"
+                        style="width:50px;">
+                       
+                        <div class="collapse-inner rounded bg-white py-2">
+                            @if ($result->status == "Draft") 
+                               <a class="dropdown-item" href="{{ route('ticket.show', $result->id) }}">
+                                <button type="button" class="btn btn-sm btn-success">
+                                 <i class="fas fa-fw fa-eye"></i>
+                                <span>{{ __('Show') }}</span></button>
+                            </a>
+                            <div class="dropdown-item">
+                                <form action="{{ route('ticket.destroy', $result->id) }}" method="post">
+                                  @csrf
+                                  @method('delete')
+                                  <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this?')"> <i class="fas fa-fw fa-trash"></i>
+                                    <span>{{ __('Delete') }}</span></button>
+                              </form>
+                              </div>
+                              <a class="dropdown-item" href="{{ route('ticket.edit', $result->id) }}">
+                                <button type="button" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-fw fa-pencil-alt"></i>
+                                   <span>{{ __('Edit') }}</span></button>
+                            </a>
+                            @else
+                            <a class="dropdown-item" href="{{ route('ticket.show', $result->id) }}">
+                                <button type="button" class="btn btn-sm btn-success">
+                                 <i class="fas fa-fw fa-eye"></i>
+                                <span>{{ __('Show') }}</span></button>
+                            </a>
+                           
                             @endif
                         </div>
+                        </div>
+                        
                     </td>
                 </tr>
             @endforeach

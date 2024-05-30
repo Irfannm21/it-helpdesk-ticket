@@ -38,9 +38,13 @@ class WorkplanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Workplan $workplan)
     {
-        //
+        return view('workplan.show',[
+            'title' => 'Show Workplan',
+            "workplan" => $workplan,
+            "results" => User::get()
+        ]);
     }
 
     /**
