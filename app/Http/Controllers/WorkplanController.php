@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Workplan\WorkplanRequest;
 use App\Models\Workplan;
 use App\User;
 use Illuminate\Http\Request;
@@ -62,7 +63,7 @@ class WorkplanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Workplan $workplan)
+    public function update(WorkplanRequest $request, Workplan $workplan)
     {
         return $workplan->handleStoreOrUpdate($request);
     }

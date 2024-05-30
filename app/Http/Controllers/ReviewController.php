@@ -40,7 +40,7 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
-        return view('review.edit',[
+        return view('review.show',[
             'title' => "Show Feedback",
             'review' => $review,
             'results' => $review->realization->details,

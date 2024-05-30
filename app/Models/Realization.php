@@ -74,6 +74,9 @@ class Realization extends Model
 
     public function handleSubmit($request)
     {
+        if($this->details->isNotEmpty() == false) {
+            return redirect()->route('realization.detail',$this->id)->with('message', 'Cant Submit Fill Realization!');
+        }
         $this->beginTransaction();
         if($request->action == "submit") {
             $this->status = "completed";

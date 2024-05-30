@@ -45,7 +45,7 @@
                         </button>
                     </div>
                         <div id="collapseTwo{{$result->id}}" class="collapse" aria-labelledby="headingTwo"
-                        style="width:50px;">
+                        style="width:70px;">
                        
                         <div class="collapse-inner rounded bg-white py-2">
                             @if ($result->status == "Draft") 
@@ -53,6 +53,11 @@
                                 <button type="button" class="btn btn-sm btn-success">
                                  <i class="fas fa-fw fa-eye"></i>
                                 <span>{{ __('Show') }}</span></button>
+                            </a>
+                            <a class="dropdown-item" href="{{ route('ticket.edit', $result->id) }}">
+                                <button type="button" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-fw fa-pencil-alt"></i>
+                                   <span>{{ __('Edit') }}</span></button>
                             </a>
                             <div class="dropdown-item">
                                 <form action="{{ route('ticket.destroy', $result->id) }}" method="post">
@@ -62,11 +67,7 @@
                                     <span>{{ __('Delete') }}</span></button>
                               </form>
                               </div>
-                              <a class="dropdown-item" href="{{ route('ticket.edit', $result->id) }}">
-                                <button type="button" class="btn btn-sm btn-warning">
-                                    <i class="fas fa-fw fa-pencil-alt"></i>
-                                   <span>{{ __('Edit') }}</span></button>
-                            </a>
+                           
                             @else
                             <a class="dropdown-item" href="{{ route('ticket.show', $result->id) }}">
                                 <button type="button" class="btn btn-sm btn-success">

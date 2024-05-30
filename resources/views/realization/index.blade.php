@@ -66,7 +66,7 @@
                             style="width:50px;">
                            
                             <div class="collapse-inner rounded bg-white py-2">
-                                <a class="dropdown-item" href="{{ route('workplan.show', $result->id) }}">
+                                <a class="dropdown-item" href="{{ route('realization.show', $result->id) }}">
                                     <button type="button" class="btn btn-sm btn-success">
                                      <i class="fas fa-fw fa-eye"></i>
                                     <span>{{ __('Show') }}</span></button>
