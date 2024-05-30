@@ -68,12 +68,24 @@
                               </form>
                               </div>
                            
+                            @elseif($result->status == "Completed")
+                            <a class="dropdown-item" href="{{ route('ticket.print', $result->id) }}">
+                                <button type="button" class="btn btn-sm btn-secondary">
+                                 <i class="fas fa-fw fa-print"></i>
+                                <span>{{ __('Print') }}</span></button>
+                            </a>
+                            <a class="dropdown-item" href="{{ route('ticket.show', $result->id) }}">
+                                <button type="button" class="btn btn-sm btn-success">
+                                 <i class="fas fa-fw fa-eye"></i>
+                                <span>{{ __('Show') }}</span></button>
+                            </a>
                             @else
                             <a class="dropdown-item" href="{{ route('ticket.show', $result->id) }}">
                                 <button type="button" class="btn btn-sm btn-success">
                                  <i class="fas fa-fw fa-eye"></i>
                                 <span>{{ __('Show') }}</span></button>
                             </a>
+                        
                            
                             @endif
                         </div>

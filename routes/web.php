@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('position', PositionController::class);
     Route::resource('client', ClientController::class);
     Route::get('/ticket/monitor','TicketController@monitor')->name('ticket.monitor');
+    Route::get('ticket/{ticket}/print', 'TicketController@print')->name('ticket.print');
     Route::resource('ticket', TicketController::class);
     Route::resource('workplan', WorkplanController::class);
         Route::get('realization/{realization}/create', 'RealizationController@create')->name('realization.create');

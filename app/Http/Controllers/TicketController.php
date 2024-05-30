@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Ticket\TicketRequest;
 use App\Models\Ticket;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        return view('ticket.index',[
+        return view('ticket.index', [
             'title' => "Table Ticket",
             'results' => Ticket::paginate(10),
         ]);
@@ -25,7 +26,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('ticket.create',[
+        return view('ticket.create', [
             'title' => "New Ticket",
         ]);
     }
@@ -44,7 +45,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        return view('ticket.show',[
+        return view('ticket.show', [
             'title' => "Show Ticket",
             'ticket' => $ticket
         ]);
@@ -55,7 +56,7 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        return view('ticket.edit',[
+        return view('ticket.edit', [
             'title' => "Edit Ticket",
             'ticket' => $ticket
         ]);
@@ -79,9 +80,20 @@ class TicketController extends Controller
 
     public function monitor()
     {
-        return view('ticket.monitor',[
+        return view('ticket.monitor', [
             'title' => "Monitoring Ticket",
-            'results' => Ticket::where('client_id',Auth::user()->id)->paginate(10),
+            'results' => Ticket::where('client_id', Auth::user()->id)->paginate(10),
         ]);
+    }
+
+    public function print(Ticket $ticket)
+    {
+
+        $pdf = PDF::loadView(
+            'ticket.print',
+            compact('ticket')
+        )
+            ->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }
