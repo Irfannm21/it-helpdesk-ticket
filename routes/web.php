@@ -55,6 +55,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('ticket', TicketController::class);
     Route::get('workplan/{workplan}/print', 'WorkplanController@print')->name('workplan.print');
     Route::resource('workplan', WorkplanController::class);
+    Route::get('realization/{realization}/print', 'RealizationController@print')->name('realization.print');
+    Route::get('realization/{realization}/show', 'RealizationController@show')->name('realization.show');
         Route::get('realization/{realization}/create', 'RealizationController@create')->name('realization.create');
     Route::get('realization', 'RealizationController@index')->name('realization.index');
     Route::post('realization/store', 'RealizationController@store')->name('realization.store');

@@ -6,6 +6,7 @@ use App\Http\Requests\Realization\RealizationRequest;
 use App\Models\Realization;
 use App\Models\RealizationDetail;
 use App\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class RealizationController extends Controller
@@ -73,9 +74,14 @@ class RealizationController extends Controller
         return $realization->handleSubmit($request);
     }
 
-    public function destroy(string $id)
+    public function print(Realization $realization)
     {
-        //
+        $pdf = PDF::loadView(
+            'realization.print',
+            compact('realization')
+        )
+            ->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 
     public function detailEdit(RealizationDetail $realizationDetail)

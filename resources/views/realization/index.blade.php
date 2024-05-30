@@ -93,7 +93,13 @@
                                        <span>{{ __('Detail') }}</span></button>
                                 </a>
 
-                               
+                                @elseif($result->status == "Completed")
+
+                                <a class="dropdown-item" href="{{ route('realization.print', $result->id) }}">
+                                    <button type="button" class="btn btn-sm btn-secondary">
+                                     <i class="fas fa-fw fa-print"></i>
+                                    <span>{{ __('Print') }}</span></button>
+                                </a>
 
                                 @endif
                     </td>
