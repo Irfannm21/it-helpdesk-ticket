@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Workplan\WorkplanRequest;
 use App\Models\Workplan;
 use App\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class WorkplanController extends Controller
@@ -68,11 +69,16 @@ class WorkplanController extends Controller
         return $workplan->handleStoreOrUpdate($request);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function print(Workplan $workplan)
     {
-        //
+        // dd($workplan);
+        $pdf = PDF::loadView(
+            'workplan.print',
+            compact('workplan')
+        )
+            ->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
+
+    
 }
