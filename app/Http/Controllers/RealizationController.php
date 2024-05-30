@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Realization\RealizationRequest;
 use App\Models\Realization;
 use App\Models\RealizationDetail;
 use App\User;
@@ -40,7 +41,7 @@ class RealizationController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(RealizationRequest $request)
     {
         $record = new RealizationDetail;
         return $record->handleStoreOrUpdate($request);
@@ -67,9 +68,9 @@ class RealizationController extends Controller
         return $realization->handleStoreOrUpdate($request);
     }
 
-    public function submit(Realization $realization)
+    public function submit(Request $request, Realization $realization)
     {
-        return $realization->handleSubmit();
+        return $realization->handleSubmit($request);
     }
 
     public function destroy(string $id)

@@ -57,7 +57,7 @@ class Realization extends Model
             } else {
                 $this->started = $request->date ." ". $request->started . ":00";
                 $this->finished = $request->date ." ". $request->finished . ":00";
-                $this->status = "draft";
+                // $this->status = "draft";
                 $this->save();
             }
             $this->commitSaved();
@@ -72,10 +72,10 @@ class Realization extends Model
 
     }
 
-    public function handleSubmit()
+    public function handleSubmit($request)
     {
         $this->beginTransaction();
-        try {
+        if($request->action == "submit") {
             $this->status = "completed";
             $this->save();
             $review = Review::firstOrNew([
@@ -84,6 +84,12 @@ class Realization extends Model
                 'status' => "New",
             ]);
             $review->save();
+        } else {
+            $this->status = "Draft";
+            $this->save();
+        }
+        try {
+           
             $this->commitSaved();
               if(request()->route()->getName() == 'realization.store') {
                 return redirect()->route('realization.index',$this->id)->with('message', 'Realization added successfully!');

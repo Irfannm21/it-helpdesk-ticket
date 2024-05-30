@@ -38,7 +38,7 @@
                         {!! $result->getDescriptionRaw($result->ticket->description) !!}
                     </td>
                     <td>{{ $result->user->name ?? '' }}</td>
-                    <td>{{ $result->status }}</td>
+                    <td>{!! $result->checkLabel($result->status) !!}</td>
                     <td>
                         <div class="btn-group">
                             <button class="dropdown-toggle btn-primary" href="#" data-toggle="collapse" data-target="#collapseTwo{{$result->id}}"
@@ -56,10 +56,10 @@
                                     <span>{{ __('Show') }}</span></button>
                                 </a>
                                 @if ($result->status == "New") 
-                                   <a class="dropdown-item" href="{{ route('workplan.show', $result->id) }}">
-                                    <button type="button" class="btn btn-sm btn-success">
-                                     <i class="fas fa-fw fa-eye"></i>
-                                    <span>{{ __('Show') }}</span></button>
+                                <a class="dropdown-item" href="{{ route('workplan.edit', $result->id) }}">
+                                    <button type="button" class="btn btn-sm btn-warning">
+                                        <i class="fas fa-fw fa-user"></i>
+                                       <span>{{ __('Tambah') }}</span></button>
                                 </a>
                                   
                                 @elseif ($result->status == "Draft")

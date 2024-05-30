@@ -35,7 +35,7 @@
                     <td>{{ $result->datetime->format('d-m-Y')}} <br> {{$result->datetime->format('H : i') }}</td>
                     <td>{{ $result->client->name }} ({{ $result->client->position->name }})</td>
                     <td>{{ $result->client->code ?? '' }}</td>
-                    <td>{{ $result->description }}</td>
+                    <td>{!! $result->getDescriptionRaw($result->description) !!}</td>
                     <td>{!! $result->checkLabel($result->status) !!}</td>
                     <td>
                         <div class="btn-group">

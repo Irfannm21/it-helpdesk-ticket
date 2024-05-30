@@ -36,7 +36,7 @@
                                             <option value="{{$realization->workplan->ticket->client->printer_id}}">{{$realization->workplan->ticket->client->printer->code}}</option>
                                             <option value="{{$realization->workplan->ticket->client->network_id}}">{{$realization->workplan->ticket->client->network->code}}</option>
                                         </select>
-                                        @error('name')
+                                        @error('product_id')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -82,7 +82,7 @@
                                     <label for="description">Problem Description</label>
                                     <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
                                     @error('description')
-                                        <span class="text-danger">{{ old('description') }}</span>
+                                        <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>

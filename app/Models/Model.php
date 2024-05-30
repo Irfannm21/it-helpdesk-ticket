@@ -50,7 +50,7 @@ class Model extends Base
                 return  " <h6><b class='badge rounded-pillbadge bg-warning text-dark p-2'>" . $value ."</b></h6>";
                     break;
             default:
-                # code...
+                return  " <h6><b class='badge rounded-pillbadge bg-danger text-light p-2'>" . $value ."</b></h6>";
                 break;
         }
     }

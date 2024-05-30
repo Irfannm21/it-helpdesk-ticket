@@ -199,8 +199,8 @@
     </table>
     <form action="{{ route('realization.submit',$realization->id) }}" method="post">
         @csrf
-        <button type="submit" class="btn btn-success" value="submit">Save Realization</button>
-        <a href="{{ route('realization.index') }}" class="btn btn-default">Back to list</a>
+        <button name="action" type="submit" class="btn btn-success" value="submit">Save</button>
+        <button name="action" type="draft" class="btn btn-warning" value="draft">Draft</button>
     </form>
            
         </div>

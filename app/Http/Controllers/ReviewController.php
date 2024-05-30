@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Review\ReviewRequest;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
@@ -37,9 +38,13 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Review $review)
     {
-        //
+        return view('review.edit',[
+            'title' => "Show Feedback",
+            'review' => $review,
+            'results' => $review->realization->details,
+        ]);
     }
 
     /**
@@ -57,7 +62,7 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Review $review)
+    public function update(ReviewRequest $request, Review $review)
     {
         return $review->handleStoreOrUpdate($request);
     }

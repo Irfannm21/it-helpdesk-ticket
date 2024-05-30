@@ -28,8 +28,13 @@
                     <td scope="row">{{ $loop->iteration }}</td>
                     <td>{!! $result->client->name . "<br>" . $result->code !!}</td>
                     <td>{{ $result->datetime->format('d-m-Y')}} <br> {{$result->datetime->format('H : i') }}</td>
+                    @if($result->workplan)
                     <td>{{ $result->workplan->realizations ? $result->workplan->realizations->user->name : '' }} <br> {{$result->workplan->realizations ? $result->workplan->realizations->user->position->name : ''}}</td>
                     <td>{{ $result->workplan->realizations ? $result->workplan->realizations->date->format('d-m-Y') : ''  }}</td>
+                    @else
+                    <td></td>
+                    <td></td>
+                    @endif
                     <td>{!! $result->checkLabel($result->checkStatus($result->id)) !!}</td>
                 </tr>
             @endforeach

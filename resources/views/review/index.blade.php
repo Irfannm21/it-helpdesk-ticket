@@ -34,11 +34,37 @@
                     <td>{{ $result->realization->user->name ?? '' }}</td>
                     <td>{{$result->date ? $result->date->format('d-m-Y') : ''}}</td>
                     <td>{!! $result->getDescriptionRaw($result->description) !!}</td>
-                    <td>{{ $result->status }}</td>
+                    <td>{!! $result->checkLabel($result->status) !!}</td>
                     <td>
-                        <div class="d-flex">
-                            <a href="{{ route('review.edit', $result->id) }}" class="btn btn-sm btn-primary mr-2">Tambah</a>
+                        <div class="btn-group">
+                            <button class="dropdown-toggle btn-primary" href="#" data-toggle="collapse" data-target="#collapseTwo{{$result->id}}"
+                            aria-expanded="false" aria-controls="collapseTwo{{$result->id}}">
+                               <span>{{ __('Action') }}</span></button>
+                            </button>
                         </div>
+                            <div id="collapseTwo{{$result->id}}" class="collapse" aria-labelledby="headingTwo"
+                            style="width:50px;">
+                           
+                            <div class="collapse-inner rounded bg-white py-2">
+                                <a class="dropdown-item" href="{{ route('review.show', $result->id) }}">
+                                    <button type="button" class="btn btn-sm btn-success">
+                                     <i class="fas fa-fw fa-eye"></i>
+                                    <span>{{ __('Show') }}</span></button>
+                                </a>
+                                @if ($result->status == "New") 
+                                <a class="dropdown-item" href="{{ route('review.edit', $result->id) }}">
+                                    <button type="button" class="btn btn-sm btn-warning">
+                                        <i class="fas fa-fw fa-check"></i>
+                                       <span>{{ __('Tambah') }}</span></button>
+                                </a>
+                                  
+                                @elseif ($result->status == "Draft")
+                                <a class="dropdown-item" href="{{ route('review.edit', $result->id) }}">
+                                    <button type="button" class="btn btn-sm btn-warning">
+                                        <i class="fas fa-fw fa-check"></i>
+                                       <span>{{ __('Edit') }}</span></button>
+                                </a>
+                                @endif
                     </td>
                 </tr>
             @endforeach
