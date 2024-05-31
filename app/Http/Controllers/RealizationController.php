@@ -48,9 +48,16 @@ class RealizationController extends Controller
         return $record->handleStoreOrUpdate($request);
     }
 
-    public function show(string $id)
+    public function show(Realization $realization)
     {
-        //
+        return view('realization.show',
+        [
+            'title' => "Ticket Info",
+            'title_2' => "Instruction Info",
+            "title_3" => "Realization",
+            'realization' => $realization, 
+            "results" => RealizationDetail::where('realization_id', $realization->id)->paginate(10),
+        ]);
     }
 
     public function edit(Realization $realization)
