@@ -16,7 +16,8 @@
         "laravel/framework": "^11.0",
         "laravel/legacy-factories": "^1.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^4.0"
+        "laravel/ui": "^4.0",
+        "spatie/laravel-permission": "^6.7"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^2.0",

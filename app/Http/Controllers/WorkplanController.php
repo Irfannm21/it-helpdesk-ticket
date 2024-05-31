@@ -57,7 +57,7 @@ class WorkplanController extends Controller
         return view('workplan.edit',[
             'title' => 'Create Workplan',
             "workplan" => $workplan,
-            "results" => User::get()
+            "results" => User::whereIn('id',[2,3])->get()
         ]);
     }
 

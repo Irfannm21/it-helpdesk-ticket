@@ -13,7 +13,23 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
+
+
+        
         $arr = [
+            [
+                'name' => 'Administrator',
+                'username' => 'Administrator',
+                // 'code' => '001/DIR/01/51',
+                'email' => 'admin@mail.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                // 'pc_id' => 1,
+                // "position_id" => 1,
+                // "printer_id" => 11,
+                // "network_id" => 17,
+                'role_id' => 1
+            ],
             [
                 'name' => 'Irfan',
                 'username' => 'irfan',
@@ -25,6 +41,7 @@ class UsersSeeder extends Seeder
                 "position_id" => 1,
                 "printer_id" => 11,
                 "network_id" => 17,
+                'role_id' => 2
             ],
             [
                 'name' => 'Nur Muhannad',
@@ -37,6 +54,7 @@ class UsersSeeder extends Seeder
                 'pc_id' => 2, 
                 "printer_id" => 12,
                 "network_id" => 17,
+                'role_id' => 3
             ],
             [
                 'name' => 'Yudi Hadiandi',
@@ -49,6 +67,7 @@ class UsersSeeder extends Seeder
                 'pc_id'      => 3, 
                 "printer_id" => 13,
                 "network_id" => 18,
+                'role_id' => 3
             ],
         ];
 
@@ -58,14 +77,15 @@ class UsersSeeder extends Seeder
             );
 
             $result->username = $val['username'];
-            $result->code = $val['code'];
+            $result->code = $val['code'] ?? NULL;
             $result->email = $val['email'];
             $result->email_verified_at = $val['email_verified_at'];
             $result->password = $val['password'];
-            $result->pc_id = $val['pc_id'];
+            $result->pc_id = $val['pc_id'] ?? NULL;
             $result->position_id = $val['position_id'] ?? NULL;
-            $result->printer_id = $val['printer_id'];
-            $result->network_id = $val['network_id'];
+            $result->printer_id = $val['printer_id'] ?? NULL;
+            $result->network_id = $val['network_id'] ?? NULL;
+            $result->role_id = $val['role_id'] ?? NULL;
             $result->save();
             
         }

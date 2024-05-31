@@ -14,6 +14,12 @@ class Product extends Model
         'description',
     ];
 
+
+    public function details()
+    {
+        return $this->hasMany(RealizationDetail::class, 'product_id');
+    }
+
     
     public function handleStoreOrUpdate($request)
     {

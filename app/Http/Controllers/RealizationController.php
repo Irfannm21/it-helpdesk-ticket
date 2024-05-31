@@ -66,7 +66,7 @@ class RealizationController extends Controller
             'title' => "Ticket Info",
             'title_2' => "Instruction Info",
             "title_3" => "Realization",
-            "results" =>    User::get(),
+            "results" => User::whereIn('id',[2,3])->get(),
             'realization' => $realization, 
         ]);
     }

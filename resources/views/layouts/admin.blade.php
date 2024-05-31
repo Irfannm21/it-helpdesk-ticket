@@ -43,6 +43,73 @@
                 <div class="sidebar-brand-text mx-3">IT Helpdesk</div>
             </a>
 
+              <!-- Divider -->
+              <hr class="sidebar-divider">
+              <!-- Heading -->
+              {{-- @if (Auth::user()->hasRole('Administrator')) --}}
+              <div class="sidebar-heading">
+                  {{ __('Data Master') }}
+              </div>
+              <!-- Nav Item -->
+  
+              <li class="nav-item {{ Nav::isRoute('product.index') }}">
+                  <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                      aria-expanded="false" aria-controls="collapseTwo">
+                      <i class="fas fa-fw fa-building"></i>
+                      <span>Structure Organization</span>
+                  </a>
+                  <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                      style="">
+                      <div class="collapse-inner rounded bg-white py-2">
+                          <a class="collapse-item" href="{{ route('office.index') }}">
+                              <i class="fas fa-fw fa-building"></i>
+                              <span>{{ __('Main Office') }}</span>
+                          </a>
+                          <a class="collapse-item" href="{{ route('director.index') }}">
+                              <i class="fas fa-fw fa-user"></i>
+                              <span>{{ __('Directors') }}</span>
+                          </a>
+                          <a class="collapse-item" href="{{ route('department.index') }}">
+                              <i class="fas fa-fw fa-user"></i>
+                              <span>{{ __('Department') }}</span>
+                          </a>
+                          <a class="collapse-item" href="{{ route('division.index') }}">
+                              <i class="fas fa-fw fa-user"></i>
+                              <span>{{ __('Division') }}</span>
+                          </a>
+  
+                      </div>
+                  </div>
+              </li>
+  
+              <!-- Nav Item -->
+              <li class="nav-item {{ Nav::isRoute('position.index') }}">
+                  <a class="nav-link" href="{{ route('position.index') }}">
+                      <i class="fas fa-fw fa-user-graduate"></i>
+                      <span>{{ __('Position') }}</span>
+                  </a>
+              </li>
+  
+              <!-- Nav Item -->
+              <li class="nav-item {{ Nav::isRoute('product.index') }}">
+                  <a class="nav-link" href="{{ route('product.index') }}">
+                      <i class="fas fa-fw fa-microchip"></i>
+                      <span>{{ __('Product') }}</span>
+                  </a>
+              </li>
+  
+                <!-- Nav Item -->
+                <li class="nav-item {{ Nav::isRoute('client.index') }}">
+                  <a class="nav-link" href="{{ route('client.index') }}">
+                      <i class="fas fa-fw fa-desktop"></i>
+                      <span>{{ __('User Client') }}</span>
+                  </a>
+              </li>
+              <!-- Divider -->
+              <hr class="sidebar-divider">
+
+              {{-- @endif --}}
+
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -98,69 +165,7 @@
                 </a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                {{ __('Data Master') }}
-            </div>
-            <!-- Nav Item -->
-
-            <li class="nav-item {{ Nav::isRoute('product.index') }}">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-building"></i>
-                    <span>Structure Organization</span>
-                </a>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
-                    style="">
-                    <div class="collapse-inner rounded bg-white py-2">
-                        <a class="collapse-item" href="{{ route('office.index') }}">
-                            <i class="fas fa-fw fa-building"></i>
-                            <span>{{ __('Main Office') }}</span>
-                        </a>
-                        <a class="collapse-item" href="{{ route('director.index') }}">
-                            <i class="fas fa-fw fa-user"></i>
-                            <span>{{ __('Directors') }}</span>
-                        </a>
-                        <a class="collapse-item" href="{{ route('department.index') }}">
-                            <i class="fas fa-fw fa-user"></i>
-                            <span>{{ __('Department') }}</span>
-                        </a>
-                        <a class="collapse-item" href="{{ route('division.index') }}">
-                            <i class="fas fa-fw fa-user"></i>
-                            <span>{{ __('Division') }}</span>
-                        </a>
-
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item -->
-            <li class="nav-item {{ Nav::isRoute('position.index') }}">
-                <a class="nav-link" href="{{ route('position.index') }}">
-                    <i class="fas fa-fw fa-user-graduate"></i>
-                    <span>{{ __('Position') }}</span>
-                </a>
-            </li>
-
-            <!-- Nav Item -->
-            <li class="nav-item {{ Nav::isRoute('product.index') }}">
-                <a class="nav-link" href="{{ route('product.index') }}">
-                    <i class="fas fa-fw fa-microchip"></i>
-                    <span>{{ __('Product') }}</span>
-                </a>
-            </li>
-
-              <!-- Nav Item -->
-              <li class="nav-item {{ Nav::isRoute('client.index') }}">
-                <a class="nav-link" href="{{ route('client.index') }}">
-                    <i class="fas fa-fw fa-desktop"></i>
-                    <span>{{ __('User Client') }}</span>
-                </a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+          
 
             {{-- <!-- Heading -->
             <div class="sidebar-heading">

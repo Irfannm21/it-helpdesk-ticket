@@ -9,10 +9,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable, ResponseTrait;
+    use Notifiable, ResponseTrait, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -60,6 +63,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Product::class,'network_id');
     }
+
 
     public function getFullNameAttribute()
     {
