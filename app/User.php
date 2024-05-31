@@ -54,6 +54,11 @@ class User extends Authenticatable
         return $this->belongsTo(Product::class,'pc_id');
     }
 
+    public function client()
+    {
+        return $this->belongsTo(Product::class,'client_id');
+    }
+
     public function printer()
     {
         return $this->belongsTo(Product::class,'printer_id');

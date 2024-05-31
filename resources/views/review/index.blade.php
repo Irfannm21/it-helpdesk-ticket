@@ -30,7 +30,7 @@
                 <tr>
                     <td scope="row">{{ $loop->iteration }}</td>
                     <td>{{ $result->realization->workplan->ticket->code ?? '' }}</td>
-                    <td></td>
+                    <td>{{$result->realization->details->count() ?? ''}}</td>
                     <td>{{ $result->realization->user->name ?? '' }}</td>
                     <td>{{$result->date ? $result->date->format('d-m-Y') : ''}}</td>
                     <td>{!! $result->getDescriptionRaw($result->description) !!}</td>

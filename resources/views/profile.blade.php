@@ -123,8 +123,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <h6 class="heading-small text-muted mb-4">User information</h6>
                         </div>
 
                         <!-- Button -->
@@ -136,6 +134,54 @@
                             </div>
                         </div>
                     </form>
+
+                </div>
+
+            </div>
+            <div class="card shadow mb-4">
+
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Client Information</h6>
+                </div>
+
+                <div class="card-body">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                        <input type="hidden" name="_method" value="PUT">
+
+                        <h6 class="heading-small text-muted mb-4">PC Information</h6>
+
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" for="name">Client ID<span class="small text-danger">*</span></label>
+                                        <input disabled type="text" id="name" class="form-control" name="name" placeholder="Name" value="{{ old('name', Auth::user()->code ?? '') }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" for="username">Printer ID</label>
+                                        <input disabled type="text" id="username" class="form-control" name="username" placeholder="Username" value="{{ old('username', Auth::user()->printer->code ?? '') }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="email">Network ID<span class="small text-danger">*</span></label>
+                                        <input disabled type="text" id="email" class="form-control" name="email" placeholder="example@example.com" value="{{ old('email', Auth::user()->network->code ?? "") }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="email">PC ID<span class="small text-danger">*</span></label>
+                                        <input disabled type="text" id="email" class="form-control" name="email" placeholder="example@example.com" value="{{ old('email', Auth::user()->pc->code ?? '') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                 </div>
 
