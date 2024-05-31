@@ -42,6 +42,10 @@ class PositionSeeder extends Seeder
             ],
             // Postion Department Engineering
             [
+                "name" => "IT Enginner",
+                "org_id" => 6,
+            ],
+            [
                 "name" => "Mechanical Engineer",
                 "org_id" => 6,
             ],

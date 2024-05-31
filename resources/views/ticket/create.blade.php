@@ -11,44 +11,60 @@
             <form action="{{ route('ticket.store') }}" method="post">
                 @csrf
 
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name Product" autocomplete="off" value="{{ old('name') ?? Auth::user()->name }}" readonly>
+                    @error('name')
+                      <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">PC ID</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name Product" autocomplete="off" value="{{ Auth::user()->pc->code ?? ' - ' }}" readonly>
+                    @error('name')
+                      <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                  </div>
+                </div>
+              </div>
 
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name Product" autocomplete="off" value="{{ old('name') ?? Auth::user()->name }}" readonly>
-                  @error('name')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Printer ID</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name Product" autocomplete="off" value="{{ Auth::user()->printer->code ?? ' - ' }}" readonly>
+                    @error('name')
+                      <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                  </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Network ID</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name Product" autocomplete="off" value="{{ Auth::user()->network->code ?? ' - ' }}" readonly>
+                    @error('name')
+                      <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                  </div>
+                </div>
+              </div>   
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="description">Issue</label>
+                    <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
+                    @error('description')
+                      <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                  </div>
+                </div>
+              </div>
 
-                <div class="form-group">
-                  <label for="name">PC ID</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name Product" autocomplete="off" value="{{ Auth::user()->pc->code ?? ' - ' }}" readonly>
-                  @error('name')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
-                <div class="form-group">
-                  <label for="name">Printer ID</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name Product" autocomplete="off" value="{{ Auth::user()->printer->code ?? ' - ' }}" readonly>
-                  @error('name')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
-                <div class="form-group">
-                  <label for="name">Network ID</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name Product" autocomplete="off" value="{{ Auth::user()->network->code ?? ' - ' }}" readonly>
-                  @error('name')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
-
-                <div class="form-group">
-                  <label for="description">Issue</label>
-                  <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
-                  @error('description')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
+               
 
                
                 <button type="submit" name="action" value="submit" class="btn btn-primary">Save</button>

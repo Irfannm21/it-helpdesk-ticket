@@ -30,6 +30,8 @@ class UsersSeeder extends Seeder
                 // "network_id" => 17,
                 'role_id' => 1
             ],
+
+            // Client USER
             [
                 'name' => 'Irfan',
                 'username' => 'irfan',
@@ -44,7 +46,7 @@ class UsersSeeder extends Seeder
                 'role_id' => 2
             ],
             [
-                'name' => 'Nur Muhannad',
+                'name' => 'Nur',
                 'username' => 'nur',
                 'code' => '002/DIR/02/52',
                 'email' => 'nur@mail.com',
@@ -54,19 +56,47 @@ class UsersSeeder extends Seeder
                 'pc_id' => 2, 
                 "printer_id" => 12,
                 "network_id" => 17,
+                'role_id' => 2
+            ],
+            [
+                'name' => 'Muhammad',
+                'username' => 'Muhammad',
+                'code' => '003/DIR/03/53',
+                'email' => 'Muhammad@mail.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                "position_id" => 2,
+                'pc_id' => 3, 
+                "printer_id" => 12,
+                "network_id" => 17,
+                'role_id' => 2
+            ],
+
+            // Technician USER
+            [
+                'name' => 'Yudi',
+                'username' => 'Yudi',
+                'code' => '011/ENG/01/61',
+                'email' => 'yudi@mail.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                "position_id" => 7,
+                'pc_id' => 6, 
+                "printer_id" => 12,
+                "network_id" => 17,
                 'role_id' => 3
             ],
             [
-                'name' => 'Yudi Hadiandi',
-                'username' => 'yudi',
-                'code' => '002/DIR/03/53',
-                'email' => 'yudi@mail.com',
+                'name' => 'Hadiandi',
+                'username' => 'Hadiandi',
+                'code' => '012/ENG/02/62',
+                'email' => 'hadiandi@mail.com',
                 'email_verified_at' => now(),
-                'password'   => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                "position_id" => 3,
-                'pc_id'      => 3, 
-                "printer_id" => 13,
-                "network_id" => 18,
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                "position_id" => 7,
+                'pc_id' => 6, 
+                "printer_id" => 12,
+                "network_id" => 17,
                 'role_id' => 3
             ],
         ];

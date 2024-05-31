@@ -156,9 +156,15 @@
         <div class="card-body">
             <div class="card-title">
                 <h1 class="h3 mt-4 text-gray-800">{{ $title_3 ?? __('Blank Page') }}</h1>
+                
             </div>
             <hr>
               <a href="{{ route('realization.create',$realization->id) }}" class="btn btn-primary mb-3">Add Realization</a>
+              @if (session('message'))
+              <div class="alert alert-success">
+                  {{ session('message') }}
+              </div>
+          @endif
             <table class="table table-bordered table-stripped">
         <thead>
             <tr>
