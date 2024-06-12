@@ -64,7 +64,7 @@ class PermissionSeeder extends Seeder
             ]);
             $record->save();
             $role = Role::where('name','Client')->first();
-            $record->assignRole($role);
+            $record->givePermissionTo($role);
         }
 
         $arr = [
@@ -94,7 +94,7 @@ class PermissionSeeder extends Seeder
             ]);
             $record->save();
             $role = Role::where('name','Technician')->first();
-            $record->assignRole($role);
+            $record->givePermissionTo($role);
         }
     }
 }

@@ -95,7 +95,7 @@ class UsersSeeder extends Seeder
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 "position_id" => 7,
                 'pc_id' => 6, 
-                "printer_id" => 12,
+                "printer_id"  => 12,
                 "network_id" => 17,
                 'role_id' => 3
             ],
@@ -115,6 +115,7 @@ class UsersSeeder extends Seeder
             $result->position_id = $val['position_id'] ?? NULL;
             $result->printer_id = $val['printer_id'] ?? NULL;
             $result->network_id = $val['network_id'] ?? NULL;
+            // $result->role_id = $val['role_id'] ?? NULL;
             $result->role_id = $val['role_id'] ?? NULL;
             $result->save();
             
