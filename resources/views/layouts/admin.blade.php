@@ -22,8 +22,14 @@
     <!-- Styles -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> --}}
+    <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap4.css')}}">
+
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+    <script defer src="{{asset('js/dataTables.js')}}"></script>
+    <script defer src="{{asset('js/dataTables.bootstrap4.js')}}"></script>
+    <script defer src="{{ asset('js/script.js') }}"></script>
 
     @stack('css')
 </head>
